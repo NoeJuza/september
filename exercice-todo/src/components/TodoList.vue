@@ -1,31 +1,25 @@
-<script>
+<script setup>
 import TodoElement from "./TodoElement.vue"
-export default {
-    data() {
-        return {
-            currentText: "",
-            count: 0,
-            todoList: [
-                {
-                    "title": "Manger"
-                },
-                {
-                    "title": "Dormir"
-                },
-                {
-                    "title": "Fumer Adrien"
-                },
-                {
-                    "title": "Rouler un gros J"
-                },
-                {
-                    "title": "Se réveiller"
-                },
-            ]
-        };
-    },
-    components: { TodoElement }
-}
+import { ref } from 'vue'
+const currentText = ref("")
+const todoList= ref( [
+        {
+            "title": "Manger"
+        },
+        {
+            "title": "Dormir"
+        },
+        {
+            "title": "Fumer Adrien"
+        },
+        {
+            "title": "Rouler un gros J"
+        },
+        {
+            "title": "Se réveiller"
+        },
+    ]
+)
 </script>
 
 <template>
