@@ -1,7 +1,12 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <MainLayout>
+    <template #content>
+      <div class="about">
+        <h1>This is an about page</h1>
+      </div>
+    </template>
+  </MainLayout>
+  
 </template>
 
 <style>
@@ -13,3 +18,15 @@
   }
 }
 </style>
+<script>
+import { defineComponent } from 'vue';
+
+// Components
+import MainLayout from './MainLayout.vue';
+export default defineComponent({
+  name: 'AboutView',
+  components: {
+    MainLayout
+},
+});
+</script>

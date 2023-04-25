@@ -16,3 +16,11 @@ export default {
   }),
 }
 </script>
+<style>
+:root{
+  --v-theme-background: #F2F1E9;
+}
+.v-application{
+  background-color: 
+}
+</style>
