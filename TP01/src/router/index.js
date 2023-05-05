@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-
+import PopupTest from '../views/PopupTest.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,6 +10,11 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/popuptest',
+      name: 'popuptest',
+      component: PopupTest
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -17,6 +22,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     }
+
   ]
 })
 
