@@ -9,19 +9,12 @@ import { createVuetify } from 'vuetify'
 const septemberTheme = {
   dark: false,
   colors: {
-    background: '#F2F1E9',
-    surface: '#E5E9CD',
-    primary: '#DCE2B8',
-    'primary-darken-1': '#DCE2B8',
-    secondary: '#4C5039',
-    'secondary-darken-1': '#4C5039',
-    error: '#B00020',
-    info: '#2196F3',
-    success: '#4CAF50',
-    warning: '#FB8C00',
+   "background": '#F6F3EC',
+    "primary": '#DCE2B8',
+    "surface": '#E5E9CD',
+    "accentuated-surface": '#4C5039',
   }
 }
-
 export default createVuetify(
   {
     theme: {
