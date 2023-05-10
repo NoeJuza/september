@@ -4,7 +4,6 @@ import 'vuetify/styles'
 
 // Vuetify
 import { createVuetify } from 'vuetify'
-//#F6F3EC #E5E9Cd #DCE2B8 #4C5039
 
 const septemberTheme = {
   dark: false,
