@@ -1,8 +1,10 @@
-<script setup>
+<script>
 import TodoElement from "./TodoElement.vue"
+<<<<<<< HEAD
+<<<<<<< HEAD
 import { ref } from 'vue'
 const currentText = ref("")
-const todoList= ref( [
+const todoList= ref([
         {
             "title": "Manger"
         },
@@ -10,16 +12,49 @@ const todoList= ref( [
             "title": "Dormir"
         },
         {
-            "title": "Fumer Adrien"
+            "title": "Adrien"
         },
         {
-            "title": "Rouler un gros J"
+            "title": "Rouler"
         },
         {
             "title": "Se réveiller"
         },
     ]
 )
+=======
+=======
+>>>>>>> parent of 86cbb6a ([EDIT] changed TodoList.vue from params to compose API)
+export default {
+    data() {
+        return {
+            currentText: "",
+            count: 0,
+            todoList: [
+                {
+                    "title": "Manger"
+                },
+                {
+                    "title": "Dormir"
+                },
+                {
+                    "title": "Fumer Adrien"
+                },
+                {
+                    "title": "Rouler un gros J"
+                },
+                {
+                    "title": "Se réveiller"
+                },
+            ]
+        };
+    },
+    components: { TodoElement }
+}
+<<<<<<< HEAD
+>>>>>>> parent of 86cbb6a ([EDIT] changed TodoList.vue from params to compose API)
+=======
+>>>>>>> parent of 86cbb6a ([EDIT] changed TodoList.vue from params to compose API)
 </script>
 
 <template>
