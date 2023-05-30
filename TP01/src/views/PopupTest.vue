@@ -1,9 +1,9 @@
 <template>
-    <v-container>
+    <v-container no-gutters class="ma-0">
         <button @click="clickHandler">Show popup</button>
         <Popup :title="title" :show="showPopup" :setShow="setShow" :editable="editable" :setTitle="setTitle">
             <template #content>
-                <v-container no-gutters>
+                <v-container no-gutters class="ma-0">
                     <p>Test fonctionnel</p>
                 </v-container>
             </template>
@@ -16,7 +16,7 @@ import { defineComponent, ref } from 'vue';
 import Popup from '../components/PopupComp.vue';
 const editable = true;
 const showPopup = ref(false);
-const title = ref("Pourquoi être raciste? le nouveau roman choc d'Adrien Sauthier");
+const title = ref("Ma superbe tâche avec un titre super long genre vraiment vraiment vraiment long");
 const clickHandler = () =>{
     showPopup.value = true;
 }
