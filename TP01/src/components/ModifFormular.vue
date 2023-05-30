@@ -81,14 +81,6 @@
                 </v-col>
             </v-row>
             <v-row>
-              <v-col cols="12" md="9" sm="12" lg="9">
-                <v-btn 
-                color="secondary"
-                class="text-surface"
-                @click="isButtonClicked = true" 
-                large block>Valider
-              </v-btn>
-              </v-col>
             </v-row>
           </v-col>
         </v-row>
