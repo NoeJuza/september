@@ -1,0 +1,19 @@
+{
+    "workspaces":[
+        {
+            "id":"Number",
+            "name":"String",
+            "icon":"String",
+            "iconColor": "String",
+            "taskList":[
+                {
+                    "id":"Number",
+                    "name":"String",
+                    "":""
+                }
+            ],
+            "addTask":"Function"
+        }
+    ],
+    "addWorkspace":"Function"
+}
