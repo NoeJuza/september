@@ -41,7 +41,9 @@
               </v-card>
             </v-col>
             <v-col>
-              <v-select hide-details class="mt-2"></v-select>
+              <div class="arbitrary-size">
+                <IconPicker :currentlySelected="valueIcon" :updateCurrentlySelected="updateIcon"/>
+            </div>
             </v-col>
         </v-row>
         <v-row no-gutters>
@@ -63,9 +65,14 @@
   .custom-select {
     width: 100%;
   }
+  .arbitrary-size{
+    
+    max-height: 300px;
+}
   </style>
 <script setup>
 import { ref } from 'vue'
+import IconPicker from "../components/IconPicker.vue"
 let colorPickerActive = ref(false);
 
 function toggleColorPicker() {
@@ -76,6 +83,11 @@ let selectedColor = ref('');
 function getColor(color) {
   selectedColor.value = color;
     }
+
+const valueIcon = ref("");
+const updateIcon = (value) => {
+    valueIcon.value = value;
+};
 </script>
  
   

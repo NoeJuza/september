@@ -1,12 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-<<<<<<< HEAD
 import FormularTest from '../views/FormularTest.vue'
 import ModifFormular from '../components/ModifFormular.vue';
 import AddTask from '../components/AddTask.vue';
-=======
 import PopupTest from '../views/PopupTest.vue'
->>>>>>> 393da9ab9ea46cd8e16e2a2bcc156fc75e4fa148
+import IconPickerTest from '../views/IconPickerTest.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -16,7 +14,6 @@ const router = createRouter({
       component: HomeView
     },
     {
-<<<<<<< HEAD
       path: '/formular',
       name: 'formular',
       component: FormularTest
@@ -30,10 +27,16 @@ const router = createRouter({
       path: '/task',
       name: 'AddTask',
       component: AddTask
-=======
+    },
+    {
       path: '/popuptest',
       name: 'popuptest',
       component: PopupTest
+    },
+    {
+      path: '/icontest',
+      name: 'incontest',
+      component: IconPickerTest
     },
     {
       path: '/about',
@@ -42,9 +45,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
->>>>>>> 393da9ab9ea46cd8e16e2a2bcc156fc75e4fa148
     }
-
   ]
 })
 
