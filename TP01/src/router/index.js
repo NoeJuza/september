@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import FormularTest from '../views/FormularTest.vue'
-import ModifFormTest from '../views/ModifFormTest.vue';
-import AddTaskTest from '../views/AddTaskTest.vue';
+import AddTaskTest from '../views/AddTaskTest.vue'
+import EditTaskTest from '../views/EditTaskTest.vue';
+import AddWorkspaceTest from '../views/AddWorkspaceTest.vue';
+import AddTaskPopupTest from '../views/AddTaskPopupTest.vue';
 import PopupTest from '../views/PopupTest.vue'
 import IconPickerTest from '../views/IconPickerTest.vue'
 const router = createRouter({
@@ -14,19 +15,19 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/formular',
-      name: 'formular',
-      component: FormularTest
-    },
-    {
-      path: '/modifformular',
-      name: 'modifformular',
-      component: ModifFormTest
-    },
-    {
-      path: '/task',
-      name: 'AddTask',
+      path: '/addtasktest',
+      name: 'addtasktest',
       component: AddTaskTest
+    },
+    {
+      path: '/edittasktest',
+      name: 'edittasktest',
+      component: EditTaskTest
+    },
+    {
+      path: '/addworkspacetest',
+      name: 'addworkspacetest',
+      component: AddWorkspaceTest
     },
     {
       path: '/popuptest',
@@ -37,6 +38,11 @@ const router = createRouter({
       path: '/icontest',
       name: 'incontest',
       component: IconPickerTest
+    },
+    {
+      path: '/addtaskpopuptest',
+      name: 'addtaskpopuptest',
+      component: AddTaskPopupTest
     },
     {
       path: '/about',

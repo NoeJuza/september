@@ -10,8 +10,8 @@
               </v-card>
             </v-col>
             <v-col>
-              <v-textarea v-model="description" hide-details class="mt-2" rows="1" auto-grow :outlined="false" :bg-color="'surface'" > 
-              </v-textarea>
+              <v-text-field v-model="name" hide-details class="mt-2" rows="1" auto-grow :outlined="false" :bg-color="'surface'" > 
+              </v-text-field>
             </v-col>
         </v-row>
         <v-row>
@@ -75,12 +75,11 @@ import { ref, defineProps } from 'vue'
 import IconPicker from "../components/IconPicker.vue"
 
 const props = defineProps({
-  addTask : Function,
-  title : String
+  addWorkspace : Function,
 })
 
 let colorPickerActive = ref(false);
-let description = ref(null);
+let name = ref(null);
 function toggleColorPicker() {
       colorPickerActive.value = !colorPickerActive.value;
     }
@@ -96,11 +95,10 @@ const updateIcon = (value) => {
 };
 
 const handleClickValidate =()=>{
-  props.addTask({
-    "description": description.value,
+  props.addWorkspace({
+    "name": name.value,
     "color": selectedColor.value,
     "icon" : valueIcon.value,
-  
   })
 
 }

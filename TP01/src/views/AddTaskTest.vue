@@ -18,7 +18,7 @@
   
     components: {
     
-        AddTask
+      AddTask
     },
   });
   </script>

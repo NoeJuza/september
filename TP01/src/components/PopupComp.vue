@@ -63,7 +63,7 @@ const handleTitleFocus = () =>{
                         <v-icon @click="()=>{setShow(false)}" icon="mdi-close-box-outline"></v-icon >
                     </div>
                 </div>
-                <v-row>
+                <v-row no-gutters>
                     <slot name="content"></slot>
                 </v-row>
             </v-container>
