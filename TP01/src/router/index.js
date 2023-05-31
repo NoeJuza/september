@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PopupTest from '../views/PopupTest.vue'
+import IconPickerTest from '../views/IconPickerTest.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,6 +14,11 @@ const router = createRouter({
       path: '/popuptest',
       name: 'popuptest',
       component: PopupTest
+    },
+    {
+      path: '/icontest',
+      name: 'incontest',
+      component: IconPickerTest
     },
     {
       path: '/about',
