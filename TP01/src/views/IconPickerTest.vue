@@ -23,7 +23,7 @@ defineComponent({
     }
 })
 </script>
-<style>
+<style scoped>
 .arbitrary-size{
    
     max-height: 300px;
