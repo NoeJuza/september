@@ -1,6 +1,22 @@
 <template>
-  <HelloWorld />
-  
+  <v-container>
+    <h1>Project September</h1>
+    <div>
+      <router-link to="popuptest">Test Popup alone</router-link>
+    </div>
+    <div>
+      <router-link to="addtasktest">Test add task alone</router-link>
+    </div>
+    <div>
+      <router-link to="edittasktest">Test edit task alone</router-link>
+    </div>
+    <div>
+      <router-link to="addworkspacetest">Test add workspace alone</router-link>
+    </div>
+    <div>
+      <router-link to="addtaskpopuptest">Test add task inside popup</router-link>
+    </div>
+  </v-container>
   
 </template>
 
@@ -8,14 +24,13 @@
 import { defineComponent } from 'vue';
 
 // Components
-import HelloWorld from '../components/HelloWorld.vue';
 
 
 export default defineComponent({
   name: 'HomeView',
 
   components: {
-    HelloWorld,
+    
     
   },
 });

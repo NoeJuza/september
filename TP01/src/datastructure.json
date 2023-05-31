@@ -9,11 +9,19 @@
                 {
                     "id":"Number",
                     "name":"String",
-                    "":""
+                    "state":"String",
+                    "description":"String",
+                    "date":"String",
+                    "notif":"Boolean",
+                    "whenNotif":"String",
+                    "priority":"String",
+                    "taskType":"String"
                 }
             ],
-            "addTask":"Function"
+            "addTask":"Function",
+            "editTask":"Function"
         }
     ],
-    "addWorkspace":"Function"
+    "addWorkspace":"Function",
+    "removeWorkspace":"Function"
 }
