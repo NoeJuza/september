@@ -2,7 +2,7 @@
 
 <template>
     <v-app>
-        <v-row>
+        <v-row >
             <v-col cols="4" class="d-flex justify-center align-center" style="background-color: #e5e9cd;">
                 <h1>TO DO</h1>
             </v-col>
