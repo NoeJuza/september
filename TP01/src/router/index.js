@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import FormularTest from '../views/FormularTest.vue'
-import ModifFormular from '../components/ModifFormular.vue';
-import AddTask from '../components/AddTask.vue';
+import ModifFormTest from '../views/ModifFormTest.vue';
+import AddTaskTest from '../views/AddTaskTest.vue';
 import PopupTest from '../views/PopupTest.vue'
 import IconPickerTest from '../views/IconPickerTest.vue'
 const router = createRouter({
@@ -21,12 +21,12 @@ const router = createRouter({
     {
       path: '/modifformular',
       name: 'modifformular',
-      component: ModifFormular
+      component: ModifFormTest
     },
     {
       path: '/task',
       name: 'AddTask',
-      component: AddTask
+      component: AddTaskTest
     },
     {
       path: '/popuptest',

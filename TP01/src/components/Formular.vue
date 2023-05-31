@@ -32,7 +32,7 @@
             </v-col>
 
             <v-col cols="6" md="6" sm="6" lg="6">
-              <v-text-field hide-details style="margin-top: 6px" bg-color="surface" type="date" label="Date">
+              <v-text-field hide-details style="margin-top: 6px" bg-color="surface" type="date" label="date" v-model="date">
 
               </v-text-field>
 
@@ -58,7 +58,7 @@
           </v-row>
           <v-row>
             <v-col cols="12" md="9" sm="12" lg="9">
-              <v-btn color="secondary" class="text-surface" @click="isButtonClicked = true" large block>Valider
+              <v-btn color="accentuated-surface" class="text-surface" @click="() => handleClickValidate()" large block>Valider
               </v-btn>
             </v-col>
           </v-row>
@@ -75,10 +75,14 @@
   
 
 <script setup>
-import { ref } from 'vue'
-
-
-let description = ref('');
+import { ref, defineProps } from 'vue'
+const props = defineProps({
+  addTask : Function,
+  title : String
+})
+console.log(props.addTask)
+const date =ref(null);
+let description = ref(null);
 let selectNotification = ref("1 jour avant");
 
 let notificationItems = ([
@@ -138,6 +142,16 @@ if (isMobile.value) {
 });
 function toggleIsRing() {
   isRing.value = !isRing.value;
+}
+const handleClickValidate =()=>{
+  props.addTask({
+    "description": description.value,
+    "date":date.value,
+    "notif":isRing.value,
+    "whenNotif":selectNotification.value,
+    "priority":selectImportance.value,
+    "taskType":selectTypeTask.value
+  })
 }
 </script>
   

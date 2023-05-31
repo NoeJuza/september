@@ -4,7 +4,7 @@
 
       <v-row>
         <v-col cols="12" md="6">
-          <v-textarea v-model="description" rows="10" auto-grow :outlined="false" :bg-color="'surface'"></v-textarea>
+          <v-textarea @input="update()" v-model="fantome.description" rows="10" auto-grow :outlined="false" :bg-color="'surface'"></v-textarea>
         </v-col>
         <v-col cols="12" md="6">
           <v-row>
@@ -32,27 +32,27 @@
             </v-col>
 
             <v-col cols="6" md="6" sm="6" lg="6">
-              <v-text-field hide-details style="margin-top: 6px" bg-color="surface" type="date" label="Date">
+              <v-text-field @input="update()" hide-details style="margin-top: 6px" bg-color="surface" type="date" label="Date" v-model="fantome.date">
 
               </v-text-field>
 
               <v-row>
                 <v-col cols="9" md="9" sm="9" lg="9">
-                  <v-select hide-details style="margin-top: 6px" v-model="selectNotification"
+                  <v-select  hide-details style="margin-top: 6px" v-model="fantome.whenNotif" @update:modelValue="update()"
                     :items="isMobile ? notificationItemsAbbreviation : notificationItems" item-title="notification"
                     bg-color="surface" class="custom-select"></v-select>
                 </v-col>
                 <v-col cols="3" class="d-flex align-center justify-end">
-                  <v-btn hide-details style="margin-top: 12px" :size="buttonSize" @click="toggleIsRing()">
-                    <v-icon v-if="isRing">mdi-bell-off-outline</v-icon>
+                  <v-btn  hide-details style="margin-top: 12px" :size="buttonSize" @click="toggleIsRing(),update()">
+                    <v-icon v-if="fantome.notif">mdi-bell-off-outline</v-icon>
                     <v-icon v-else>mdi-bell-outline</v-icon>
                   </v-btn>
                 </v-col>
 
               </v-row>
-              <v-select hide-details style="margin-top: 8px" v-model="selectImportance" 
+              <v-select  hide-details style="margin-top: 8px" v-model="fantome.priority" @update:modelValue="update()"
                 :items="importanceItems" item-title="importance" bg-color="surface"></v-select>
-              <v-select hide-details style="margin-top: 8px" v-model="selectTypeTask" :items="typeTaskItems"
+              <v-select hide-details style="margin-top: 8px" v-model="fantome.taskType" @update:modelValue="update()" :items="typeTaskItems"
                 item-title="typeTask" bg-color="surface"></v-select>
             </v-col>
           </v-row>
@@ -69,10 +69,25 @@
   
 
 <script setup>
+import { reactive } from 'vue';
 import { ref } from 'vue'
+const props= defineProps({
+  task : Object,
+  editTask : Function
+})
+console.log(props.task)
 
-
-let description = ref('');
+let fantome = reactive({
+  "id":props.task.id,
+  "name":props.task.name,
+  "state":props.task.state,
+  "description":props.task.description,
+  "date":props.task.date,
+  "notif":props.task.notif,
+  "whenNotif":props.task.whenNotif,
+  "priority":props.task.priority,
+  "taskType":props.task.taskType
+})
 let selectNotification = ref("1 jour avant");
 
 let notificationItems = ([
@@ -131,7 +146,21 @@ if (isMobile.value) {
 }
 });
 function toggleIsRing() {
-  isRing.value = !isRing.value;
+  fantome.notif = !fantome.notif;
 }
+const update =()=>{
+  props.editTask(fantome.id,{
+  "id":fantome.id,
+  "name":fantome.name,
+  "state":fantome.state,
+  "description":fantome.description,
+  "date":fantome.date,
+  "notif":fantome.notif,
+  "whenNotif":fantome.whenNotif,
+  "priority":fantome.priority,
+  "taskType":fantome.taskType
+  })
+}
+
 </script>
   

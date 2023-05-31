@@ -1,16 +1,19 @@
 <template>
-    <Formular />
-    
-  </template>
+    <Formular :addTask="addTaskounette">
+      </Formular>
+</template>
   
-  <script>
+  <script setup>
   import { defineComponent } from 'vue';
-  
+
+  const addTaskounette = (objTaskIncomplete) =>{
+    console.log(objTaskIncomplete)
+  };
   // Components
  
   import Formular from '../components/Formular.vue';
   
-  export default defineComponent({
+  defineComponent({
     name: 'FormularTest',
   
     components: {

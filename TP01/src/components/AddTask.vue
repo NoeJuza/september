@@ -10,8 +10,8 @@
               </v-card>
             </v-col>
             <v-col>
-              <v-text-field hide-details class="mt-2" rows="1" auto-grow :outlined="false" :bg-color="'surface'"> 
-              </v-text-field>
+              <v-textarea v-model="description" hide-details class="mt-2" rows="1" auto-grow :outlined="false" :bg-color="'surface'" > 
+              </v-textarea>
             </v-col>
         </v-row>
         <v-row>
@@ -27,7 +27,7 @@
                 <v-card-text class="text-center"  >
                   {{ selectedColor }}
                 </v-card-text>
-                <v-btn hide-details color="secondary" class="text-surface rounded-lg mr-1" size="x-small" icon="mdi-eyedropper" @click="toggleColorPicker()"></v-btn>
+                <v-btn hide-details color="accentuated-surface" class="text-surface rounded-lg mr-1" size="x-small" icon="mdi-eyedropper" @click="toggleColorPicker()"></v-btn>
               </v-card>
               <v-color-picker  class="mt-4" hide-details hide-inputs v-if="colorPickerActive" v-model="selectedColor" @input="getColor()" ></v-color-picker>
             </v-col>
@@ -52,7 +52,7 @@
             </v-btn>
           </v-col>
           <v-col class="d-flex justify-center">
-            <v-btn color="secondary"  min-width="fit-content" class="mt-12 align-center d-flex flex-colum flex-nowrap align-content-center justify-center align-center flex flex-grow-0" @click="isButtonClicked = true" large block>Valider
+            <v-btn color="accentuated-surface"  min-width="fit-content" class="mt-12 align-center d-flex flex-colum flex-nowrap align-content-center justify-center align-center flex flex-grow-0" @click="() => handleClickValidate()" large block>Valider
             </v-btn>
           </v-col>
         </v-row>
@@ -71,10 +71,16 @@
 }
   </style>
 <script setup>
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
 import IconPicker from "../components/IconPicker.vue"
-let colorPickerActive = ref(false);
 
+const props = defineProps({
+  addTask : Function,
+  title : String
+})
+
+let colorPickerActive = ref(false);
+let description = ref(null);
 function toggleColorPicker() {
       colorPickerActive.value = !colorPickerActive.value;
     }
@@ -88,6 +94,16 @@ const valueIcon = ref("");
 const updateIcon = (value) => {
     valueIcon.value = value;
 };
+
+const handleClickValidate =()=>{
+  props.addTask({
+    "description": description.value,
+    "color": selectedColor.value,
+    "icon" : valueIcon.value,
+  
+  })
+
+}
 </script>
  
   
