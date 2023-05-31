@@ -36,7 +36,7 @@ function deleteItem(id) {
                                 <div class="pa-2 rounded-lg" :style="{ backgroundColor: item.iconColor }"><v-icon
                                         color="white">{{ item.icon }}</v-icon></div>
                                 <div class="px-10"> {{ item.name }}</div>
-                                <v-btn @click="deleteItem(item.id)" size=small class="bg-surface" elevation="3"
+                                <v-btn @click="deleteItem(item.id)" size=small class="justify-center rounded-lg bg-surface" elevation="3"
                                     icon="mdi-trash-can-outline"></v-btn>
                             </v-container>
                         </div>
