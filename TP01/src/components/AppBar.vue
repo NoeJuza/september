@@ -25,7 +25,8 @@ function deleteItem(id) {
 </script>
 
 <template>
-    <v-app-bar app fixed dense>
+    <!--Le tag fixed ne marche pas, obligé d'appliquer du CSS-->
+    <v-app-bar app style="position:fixed" class="flex-column"> 
         <!-- Navigation space-->
         <v-col cols="11" class="d-flex justify-center align-center">
             <v-sheet class="mx-auto" max-width="100vw">

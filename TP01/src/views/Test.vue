@@ -6,7 +6,7 @@ import TaskList from '../components/TaskList.vue'
 <template>
     <v-app>
         <AppBar />
-        <v-main class="ml-4 mr-4 mt-4">
+        <v-main app class="ml-8 mr-8 mt-8">
             <TaskList />
         </v-main>
     </v-app>

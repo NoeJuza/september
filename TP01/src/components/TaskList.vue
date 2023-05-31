@@ -1,6 +1,6 @@
 <template>
     <v-row>
-        <v-col cols="4">
+        <v-col cols="12" md="4">
             <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
                 <h1>TO DO</h1>
             </v-container>
@@ -10,7 +10,7 @@
             <Task v-for="(task, index) in tasks" :key="index" :importance="task.importance" :type="task.type"
                 :titre="task.titre" :date="task.date" class="mb-2"></Task>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4">
             <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
                 <h1>DOING</h1>
             </v-container>
@@ -20,7 +20,7 @@
             <Task v-for="(task, index) in tasks" :key="index" :importance="task.importance" :type="task.type"
                 :titre="task.titre" :date="task.date" class="mb-2"></Task>
         </v-col>
-        <v-col cols="4">
+        <v-col cols="12" md="4">
             <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
                 <h1>DONE</h1>
             </v-container>
@@ -29,15 +29,6 @@
             </v-container>
             <Task v-for="(task, index) in tasks" :key="index" :importance="task.importance" :type="task.type"
                 :titre="task.titre" :date="task.date" class="mb-2"></Task>
-        </v-col>
-    </v-row>
-    <v-row>
-        <v-col>
-            <input v-model="newTask.titre" placeholder="Titre" />
-            <input v-model="newTask.importance" placeholder="Importance" />
-            <input v-model="newTask.type" placeholder="Type" />
-            <input v-model="newTask.date" placeholder="Date" />
-            <v-btn @click="removeTask(index)">Supprimer</v-btn>
         </v-col>
     </v-row>
 </template>
