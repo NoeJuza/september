@@ -1,19 +1,19 @@
 <template>
   <div style="width: 100%;">
-    <v-row >
+    <v-row>
       <v-col cols="12" md="6" no-gutters>
         <v-textarea class="pa-0" v-model="description" rows="10" auto-grow :outlined="false" :bg-color="'surface'"></v-textarea>
       </v-col>
       <v-col cols="12" md="6">
         <v-row>
-          <v-col cols="5" sm="3" class="d-flex flex-column justify-center align-start">
+          <v-col cols="5" sm="4" class="d-flex flex-column justify-center align-start">
             <v-card color="surface" style="margin-top: 6px">
               <v-card-text class="text-center">
                 Échéance
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col >
+          <v-col>
             <v-text-field hide-details style="margin-top: 6px" bg-color="surface" type="date" label="date" v-model="date">
             </v-text-field>
           </v-col>
@@ -28,12 +28,12 @@
           </v-col>
           <v-col>
             <v-row>
-              <v-col cols="9">
-                <v-select hide-details style="margin-top: 6px" v-model="selectNotification"
+              <v-col cols="12" sm="9">
+                <v-select hide-details style="margin-top: 6px"
                   :items="isMobile ? notificationItemsAbbreviation : notificationItems" item-title="notification"
-                  bg-color="surface" class="custom-select"></v-select>
+                  bg-color="surface" class="custom-select" :modelValue="selectNotificationDisplay" @update:modelValue="handleNotificationChange" ></v-select>
               </v-col>
-              <v-col cols="3" class="d-flex flex-column align-center justify-end">
+              <v-col cols="12" sm="3" class="d-flex flex-column align-start align-sm-center justify-end">
                 <div class="bg-surface rounded-lg d-flex justify-center align-center" @click="toggleIsRing()" style="height: 56px; aspect-ratio: 1;">
                   <v-icon v-if="isRing">mdi-bell-off-outline</v-icon>
                   <v-icon v-else>mdi-bell-outline</v-icon>
@@ -95,6 +95,16 @@ const props = defineProps({
 const date =ref(null);
 let description = ref(null);
 let selectNotification = ref("1 jour avant");
+let selectNotificationDisplay = ref("1 jour avant");
+
+const handleNotificationChange = (newValue) =>{
+  selectNotificationDisplay.value = newValue;
+  if (notificationItemsAbbreviation.includes(newValue)){
+    selectNotification.value =  notifCorr[newValue]
+  }else{
+    selectNotification.value = newValue
+  }
+}
 
 let notificationItems = ([
    '1 jour avant',
@@ -117,7 +127,16 @@ let notificationItemsAbbreviation = ([
   '1 sem.',
   '2 sem.'
 ]);
-
+let notifCorr = {
+  '1 j. av.':'1 jour avant',
+  '2 j. av.':'2 jours avant',
+  '3 j. av.':'3 jour avant',
+  '4 j. av.':'4 jours avant',
+  '5 j. av.':'5 jours avant',
+  '6 j. av.':'6 jours avant',
+  '1 sem.':'1 semaine avant',
+  '2 sem.':'2 semaines avant'
+}
 let isRing = ref(false);
 let selectImportance = ref('Urgente');
 
@@ -135,19 +154,20 @@ let typeTaskItems = ref([
    'À déléguer'
 ]);
 
-let isMobile = ref(false);
-//let isButtonClicked = ref(false);
-let buttonSize = ref('small');
+let isMobile = ref(window.innerWidth <= 600);
+if (isMobile.value) {
+  selectNotificationDisplay.value =  '1 j. av.';
+} else {
+  selectNotificationDisplay.value =   '1 jour avant';
+}
 
 addEventListener('resize', () => {
-  buttonSize.value = window.innerWidth <= 450 ? 'x-small' : 'small';
   isMobile.value = window.innerWidth <= 600;
   if (isMobile.value) {
-
-    selectNotification.value =  '1 j. av.';
+    selectNotificationDisplay.value =  '1 j. av.';
   } else {
 
-    selectNotification.value =   '1 jour avant';
+    selectNotificationDisplay.value =   '1 jour avant';
   }
 });
 function toggleIsRing() {

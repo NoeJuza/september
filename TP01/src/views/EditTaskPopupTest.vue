@@ -1,21 +1,23 @@
 <template>
     <v-container>
-        <v-btn @click="shouldShow = true">Test</v-btn>
-        <AddTaskPopup :key="uniquePopupKey" :addTask="addTaskHandler" :show="shouldShow" :setShow="setShouldShow" stateToBeCreatedIn="TODO">
-        </AddTaskPopup>
+        <EditTaskPopup :key="'popup-for-'+currentSelectedTask.id" :task="currentSelectedTask"  :editTask="editTaskHandler" :show="shouldShow" :setShow="setShouldShow">
+        </EditTaskPopup>
         <div
         v-for="(item) in simulatedArray"
         :key="item.id"
-        >{{item.name}}</div>
+        @click="handleClickItem(item)">{{item.name}}</div>
     </v-container>
 </template>
 <script setup>
   import { defineComponent, reactive, ref } from 'vue';
-  const uniquePopupKey= ref(0);
   const shouldShow = ref(false)
   const setShouldShow = (val) =>{
-    uniquePopupKey.value = uniquePopupKey.value + 1;
     shouldShow.value = val;
+  }
+  const handleClickItem = (item) =>{
+    console.log(item);
+    currentSelectedTask.value = item; 
+    shouldShow.value = true;
   }
   const simulatedArray = reactive([
     {
@@ -24,7 +26,7 @@
         "state":"TODO",
         "description":"oui oui le pain",
         "date":'2023-05-04',
-        "notif":"true",
+        "notif":true,
         "whenNotif":"2 jours avant",
         "priority":"Moyenne",
         "taskType":"Récurente"
@@ -33,30 +35,28 @@
         "id":2,
         "name":"Ma super tâche 2",
         "state":"TODO",
-        "description":"oui oui le pain",
-        "date":'2023-05-04',
-        "notif":"true",
+        "description":"non nnon le pain",
+        "date":'2023-07-05',
+        "notif":false,
         "whenNotif":"2 jours avant",
         "priority":"Moyenne",
         "taskType":"Récurente"
     },
   ])
-  const addTaskHandler = (objTaskIncomplete) =>{
-    let nextIndex = Math.max( ...(simulatedArray.map(e =>e.id)) ) - -1;
-    objTaskIncomplete.id = nextIndex
-    console.log(objTaskIncomplete)
-    simulatedArray.push(objTaskIncomplete)
-    setShouldShow(false)
+  const currentSelectedTask= ref(simulatedArray[0]);
+  const editTaskHandler = (id,obj) =>{
+    simulatedArray[simulatedArray.findIndex(el => el.id == id)] = obj
+    console.log(simulatedArray)
   };
   // Components
  
-  import AddTaskPopup from '../components/AddTaskPopup.vue';
+  import EditTaskPopup from '../components/EditTaskPopup.vue';
   
   defineComponent({
-    name: 'AddTaskPopupTest',
+    name: 'EditTaskPopupTest',
   
     components: {
-        AddTaskPopup
+        EditTaskPopup
     },
   });
   </script>
