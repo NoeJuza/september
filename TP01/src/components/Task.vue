@@ -6,10 +6,10 @@ export default {
 </script>
 
 <template>
-  <v-container style="background-color: #e5e9cd;">
+  <v-container class="bg-surface rounded-lg w-75">
     <v-row>
       <v-col cols="12" class="title-row">
-        <h1>{{ titre }}</h1>
+        <h2>{{ titre }}</h2>
       </v-col>
     </v-row>
     <v-row class="middle-row">
@@ -22,7 +22,7 @@ export default {
     </v-row>
     <v-row>
       <v-col cols="12" class="date-row">
-        <v-icon>mdi-magnify</v-icon>
+        <v-icon>mdi-calendar</v-icon>
         {{ date }}
       </v-col>
     </v-row>

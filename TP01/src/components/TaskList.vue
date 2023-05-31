@@ -1,35 +1,51 @@
-
-
 <template>
+<<<<<<< HEAD
     <v-app>
         <v-row >
             <v-col cols="4" class="d-flex justify-center align-center" style="background-color: #e5e9cd;">
+=======
+    <v-row>
+        <v-col cols="4">
+            <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
+>>>>>>> 363d7babf06332ca673389bcbed8e1479593f83a
                 <h1>TO DO</h1>
-            </v-col>
-            <v-col cols="4" class="d-flex justify-center align-center" style="background-color: #e5e9cd;">
+            </v-container>
+            <v-container class="align-center justify-center d-flex">
+                <v-btn @click="addTask" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+            </v-container>
+            <Task v-for="(task, index) in tasks" :key="index" :importance="task.importance" :type="task.type"
+                :titre="task.titre" :date="task.date" class="mb-2"></Task>
+        </v-col>
+        <v-col cols="4">
+            <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
                 <h1>DOING</h1>
-            </v-col>
-            <v-col cols="4" class="d-flex justify-center align-center" style="background-color: #e5e9cd;">
+            </v-container>
+            <v-container class="align-center justify-center d-flex">
+                <v-btn @click="addTask" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+            </v-container>
+            <Task v-for="(task, index) in tasks" :key="index" :importance="task.importance" :type="task.type"
+                :titre="task.titre" :date="task.date" class="mb-2"></Task>
+        </v-col>
+        <v-col cols="4">
+            <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
                 <h1>DONE</h1>
-            </v-col>
-        </v-row>
-        <v-row> 
-            <v-col cols="4" class="d-flex flex-column justify-center align-center" v-for="(task, index) in tasks" :key="index">
-                <Task :importance="task.importance" :type="task.type" :titre="task.titre" :date="task.date"></Task>
-                <v-btn @click="removeTask(index)">Supprimer</v-btn>
-            </v-col>
-        </v-row>
-        <v-row>
-            <v-col>
-                <input v-model="newTask.titre" placeholder="Titre"/>
-                <input v-model="newTask.importance" placeholder="Importance"/>
-                <input v-model="newTask.type" placeholder="Type"/>
-                <input v-model="newTask.date" placeholder="Date"/>
-
-                <v-btn @click="addTask">Ajouter</v-btn>
-            </v-col>
-        </v-row>
-    </v-app>
+            </v-container>
+            <v-container class="align-center justify-center d-flex">
+                <v-btn @click="addTask" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+            </v-container>
+            <Task v-for="(task, index) in tasks" :key="index" :importance="task.importance" :type="task.type"
+                :titre="task.titre" :date="task.date" class="mb-2"></Task>
+        </v-col>
+    </v-row>
+    <v-row>
+        <v-col>
+            <input v-model="newTask.titre" placeholder="Titre" />
+            <input v-model="newTask.importance" placeholder="Importance" />
+            <input v-model="newTask.type" placeholder="Type" />
+            <input v-model="newTask.date" placeholder="Date" />
+            <v-btn @click="removeTask(index)">Supprimer</v-btn>
+        </v-col>
+    </v-row>
 </template>
 
 <script setup>
@@ -38,15 +54,15 @@ import Task from './TAsk.vue';
 
 let tasks = ref([]);
 
-let newTask = ref({title: '', importance: '', type: '', date: ''});
+let newTask = ref({ title: '', importance: '', type: '', date: '' });
 
 function addTask() {
-  tasks.value.push({...newTask.value});
-  newTask.value = {title: '', importance: '', type: '', date: ''};
+    tasks.value.push({ ...newTask.value });
+    newTask.value = { title: '', importance: '', type: '', date: '' };
 }
 
 function removeTask(index) {
-  tasks.value.splice(index, 1);
+    tasks.value.splice(index, 1);
 }
 
 </script>
