@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['importance', 'type', 'titre', 'date']
+  props: ['importance', 'type', 'title', 'date']
 }
 </script>
 
@@ -8,7 +8,7 @@ export default {
   <v-container class="bg-surface rounded-lg w-75">
     <v-row>
       <v-col cols="12" class="pa-3 rounded-lg bg-primary mb-5">
-        <h2>{{ titre }}</h2>
+        <h2>{{ title }}</h2>
       </v-col>
     </v-row>
     <v-row>
