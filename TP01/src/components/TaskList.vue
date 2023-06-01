@@ -1,13 +1,7 @@
 <template>
-<<<<<<< HEAD
-    <v-app>
-        <v-row >
-            <v-col cols="4" class="d-flex justify-center align-center" style="background-color: #e5e9cd;">
-=======
     <v-row>
         <v-col cols="4">
             <v-container class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
->>>>>>> 363d7babf06332ca673389bcbed8e1479593f83a
                 <h1>TO DO</h1>
             </v-container>
             <v-container class="align-center justify-center d-flex">
@@ -50,7 +44,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import Task from './TAsk.vue';
+import Task from './Task.vue';
 
 let tasks = ref([]);
 
