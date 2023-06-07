@@ -16,8 +16,8 @@
       "priority":"Moyenne",
       "taskType":"Récurente"
   }
-  const editTaskHandler = (id,newDates) =>{
-    console.log(id,newDates)
+  const editTaskHandler = (id,newDatas) =>{
+    console.log(id,newDatas)
   };
   // Components
  

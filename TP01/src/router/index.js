@@ -7,6 +7,8 @@ import AddTaskPopupTest from '../views/AddTaskPopupTest.vue';
 import EditTaskPopupTest from "../views/EditTaskPopupTest.vue"
 import PopupTest from '../views/PopupTest.vue'
 import IconPickerTest from '../views/IconPickerTest.vue'
+import AddWorkspacePopupTest from '../views/AddWorkspacePopupTest.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -49,6 +51,11 @@ const router = createRouter({
       path: '/edittaskpopuptest',
       name: 'edittaskpopuptest',
       component: EditTaskPopupTest
+    },
+    {
+      path: '/addworkspacepopuptest',
+      name: 'addworkspacepopuptest',
+      component: AddWorkspacePopupTest
     },
     {
       path: '/about',

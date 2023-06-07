@@ -88,17 +88,7 @@ const props= defineProps({
 })
 //console.log(props.task)
 
-let fantome = reactive({
-  "id":props.task.id,
-  "name":props.task.name,
-  "state":props.task.state,
-  "description":props.task.description,
-  "date":props.task.date,
-  "notif":props.task.notif,
-  "whenNotif":props.task.whenNotif,
-  "priority":props.task.priority,
-  "taskType":props.task.taskType
-})
+let fantome = reactive({...props.task})
 let selectNotificationDisplay = ref("1 jour avant");
 let handleNotificationChange = (newVal) =>{
   selectNotificationDisplay.value = newVal;

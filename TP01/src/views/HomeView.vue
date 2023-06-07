@@ -19,6 +19,9 @@
     <div>
       <router-link to="edittaskpopuptest">Test edit task inside popup</router-link>
     </div>
+    <div>
+      <router-link to="addworkspacepopuptest">Test add workspace inside popup</router-link>
+    </div>
   </v-container>
   
 </template>
