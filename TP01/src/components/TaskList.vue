@@ -45,7 +45,11 @@ const props = defineProps({
     addTaskHandler: {
         type: Function,
         required: true
-    }
+    }, 
+    editTaskHandler: { 
+        type: Function,
+        required: true
+    },
 });
 
 let tasksToDo = ref([]);
@@ -97,7 +101,7 @@ function dragTask(task) {
 function dropTask(newStatus) {
     if (draggedTask.value) {
         const updatedTask = { ...draggedTask.value, state: newStatus };
-        props.editTask(updatedTask);
+        props.editTaskHandler(updatedTask.id, updatedTask);
         draggedTask.value = null;
     }
 }

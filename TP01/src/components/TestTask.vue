@@ -1,5 +1,5 @@
 <template>
-    <TaskList :workspace="workspace" />
+    <TaskList :workspace="workspace" :editTaskHandler="editTaskHandler" />
 </template>
 
 <script setup>
@@ -18,6 +18,8 @@ let workspace = {
     addTask: function(task) {
         this.taskList.push(task);
     },
-  
+};
+const editTaskHandler = (id, newDatas) => {
+    console.log(id, newDatas);
 };
 </script>
