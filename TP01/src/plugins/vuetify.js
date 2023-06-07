@@ -8,7 +8,7 @@ import { createVuetify } from 'vuetify'
 const septemberTheme = {
   dark: false,
   colors: {
-   "background": '#F6F3EC',
+    "background": '#F6F3EC',
     "primary": '#DCE2B8',
     "surface": '#E5E9CD',
     "accentuated-surface": '#4C5039',

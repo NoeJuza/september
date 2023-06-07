@@ -1,0 +1,27 @@
+{
+    "workspaces":[
+        {
+            "id":"Number",
+            "name":"String",
+            "icon":"String",
+            "iconColor": "String",
+            "taskList":[
+                {
+                    "id":"Number",
+                    "name":"String",
+                    "state":"String",
+                    "description":"String",
+                    "date":"String",
+                    "notif":"Boolean",
+                    "whenNotif":"String",
+                    "priority":"String",
+                    "taskType":"String"
+                }
+            ],
+            "addTask":"Function",
+            "editTask":"Function"
+        }
+    ],
+    "addWorkspace":"Function",
+    "removeWorkspace":"Function"
+}
