@@ -1,9 +1,9 @@
 <script setup>
 import TaskList from '../components/TaskList.vue'
-import TestTask from '../components/TestTask.vue'
+import AppBar from '../components/AppBar.vue'
 
 </script>
 
 <template>
-        <TestTask ></TestTask>
+        <AppBar></AppBar>
 </template>
