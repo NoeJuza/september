@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "@vue/cli": "^5.0.8",
+    "draggable": "^4.2.0",
     "pinia": "^2.0.32",
     "roboto-fontface": "*",
-    "vue": "^3.2.47",
+    "vue": "^3.3.4",
+    "vue-draggable-next": "^2.2.0",
     "vue-router": "^4.1.6",
+    "vuedraggable": "^2.24.3",
     "vuetify": "^3.0.0",
     "webfontloader": "^1.0.0"
   },
@@ -24,11 +27,12 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "@vue/cli-service": "^5.0.8",
     "@vue/eslint-config-prettier": "^7.1.0",
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
-    "vite": "^4.1.4",
+    "vite": "^4.3.9",
     "vite-plugin-vuetify": "^1.0.0-alpha.12",
     "vue-cli-plugin-vuetify": "~2.5.8"
   }
