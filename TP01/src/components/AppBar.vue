@@ -23,7 +23,7 @@ function deleteItem(id) {
 
 export default {
     methods: {
-        getId(payload) {
+        defineId(payload) {
             this.id = payload.id
         }
     }
