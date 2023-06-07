@@ -1,11 +1,11 @@
 <template>
     <v-row>
-        <v-col cols="12" md="4" ref="toDoColumn" @dragover.prevent @drop="dropTask('to-do')">
+        <v-col cols="12" md="4" ref="toDoColumn" @dragover.prevent @drop="dropTask('todo')">
             <v-container @click="toggle('showToDo')" :class="{ 'clickable': isSmallScreen }" class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
                 <h1>TO DO</h1>
             </v-container>
             <v-container class="align-center justify-center d-flex">
-                <v-btn @click="addTask('to-do')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+                <v-btn @click="btnHandler('todo')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </v-container>
             <Task v-if="showToDo || !isSmallScreen" v-for="(task, index) in tasksToDo" :key="task.id" :importance="task.priority" :type="task.taskType"
                 :title="task.name" :date="task.date" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
@@ -15,7 +15,7 @@
                 <h1>DOING</h1>
             </v-container>
             <v-container class="align-center justify-center d-flex">
-                <v-btn @click="addTask('doing')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+                <v-btn @click="btnHandler('doing')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </v-container>
             <Task v-if="showDoing || !isSmallScreen" v-for="(task, index) in tasksDoing" :key="task.id" :importance="task.priority" :type="task.taskType"
                 :title="task.name" :date="task.date" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
@@ -25,7 +25,7 @@
                 <h1>DONE</h1>
             </v-container>
             <v-container class="align-center justify-center d-flex">
-                <v-btn @click="addTask('done')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+                <v-btn @click="btnHandler('done')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </v-container>
             <Task v-if="showDone || !isSmallScreen" v-for="(task, index) in tasksDone" :key="task.id" :importance="task.priority" :type="task.taskType"
                 :title="task.name" :date="task.date" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
@@ -41,14 +41,16 @@ const props = defineProps({
     workspace: {
         type: Object,
         default: () => ({})
+    },
+    addTaskHandler: {
+        type: Function,
+        required: true
     }
 });
 
 let tasksToDo = ref([]);
 let tasksDoing = ref([]);
 let tasksDone = ref([]);
-
-let newTask = ref({ title: '', importance: '', type: '', date: '' });
 
 let showToDo = ref(false);
 let showDoing = ref(false);
@@ -61,15 +63,13 @@ window.addEventListener('resize', () => {
 });
 
 watchEffect(() => {
-    tasksToDo.value = props.workspace.taskList.filter(task => task.state === 'to-do');
+    tasksToDo.value = props.workspace.taskList.filter(task => task.state === 'todo');
     tasksDoing.value = props.workspace.taskList.filter(task => task.state === 'doing');
     tasksDone.value = props.workspace.taskList.filter(task => task.state === 'done');
 });
 
-function addTask(status) {
-    const taskToAdd = { ...newTask.value, state: status };
-    newTask.value = { title: '', importance: '', type: '', date: '' };
-    props.workspace.addTask(taskToAdd);
+function btnHandler(status) {
+    props.addTaskHandler(status);
 }
 
 function removeTask(taskId) {
@@ -96,15 +96,8 @@ function dragTask(task) {
 
 function dropTask(newStatus) {
     if (draggedTask.value) {
-        // Update the status of the task
-        draggedTask.value.state = newStatus;
-
-        // Update the task in the list
-        const taskIndex = props.workspace.taskList.findIndex(task => task.id === draggedTask.value.id);
-        if (taskIndex !== -1) {
-            props.workspace.taskList.splice(taskIndex, 1, draggedTask.value);
-        }
-
+        const updatedTask = { ...draggedTask.value, state: newStatus };
+        props.editTask(updatedTask);
         draggedTask.value = null;
     }
 }
