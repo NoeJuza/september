@@ -53,9 +53,9 @@ const handleTitleFocus = () =>{
                 <div class="d-flex flex-row flex-nowrap justify-space-between align-center">
                     <div class="title-bar d-flex">
                         <div class="d-flex flex-column flex-nowrap align-content-center justify-center align-center">
-                            <h3 class="breaks" ref="titleContainer" :contenteditable="props.editable" @focusout="handleTitleEdit" @focusin="handleTitleFocus">{{props.title.length < 45 ? props.title : props.title.substring(0,45) + "..."}}</h3>
+                            <h3 class="breaks" ref="titleContainer" :v-show="props.editable" :contenteditable="props.editable" @focusout="handleTitleEdit" @focusin="handleTitleFocus">{{props.title.length < 45 ? props.title : props.title.substring(0,45) + "..."}}</h3>
                         </div>
-                        <div v-show="props.editable" class="d-flex flex-column flex-nowrap align-content-center justify-center align-center">
+                        <div v-show="props.editable" class="flex-column flex-nowrap align-content-center justify-center align-center">
                             <v-icon icon="mdi-pencil-outline" @click="handleClickPencil" ></v-icon>
                         </div>
                     </div>
@@ -63,7 +63,7 @@ const handleTitleFocus = () =>{
                         <v-icon @click="()=>{setShow(false)}" icon="mdi-close-box-outline"></v-icon >
                     </div>
                 </div>
-                <v-row no-gutters>
+                <v-row no-gutters class="justify-center">
                     <slot name="content"></slot>
                 </v-row>
             </v-container>
@@ -78,6 +78,7 @@ const handleTitleFocus = () =>{
 
 <style scoped>
     .popup-displayer{
+        z-index: 1;
         background-color: #00000010; /*darkens what is behind*/
         position: absolute; 
         display: flex; /*needed because d-flex puts a !important that prevails on display:none of the show*/

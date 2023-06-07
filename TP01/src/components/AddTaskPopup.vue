@@ -11,9 +11,11 @@
         addTask:Function,
         show:Boolean,
         setShow: Function,
+        stateToBeCreatedIn: String
     })
     const handleFormValidation = (object) =>{
-        object.name = taskName.value
+        object.name = taskName.value;
+        object.state = props.stateToBeCreatedIn;
         props.addTask(object)
     }
 </script>
