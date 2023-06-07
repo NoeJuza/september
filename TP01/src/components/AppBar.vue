@@ -16,39 +16,33 @@ function addItem() {
 function deleteItem(id) {
     this.items = this.items.filter(item => item.id !== id);
 }
-
-/*defineProps({
-  workspaces: Array,
-  click_Button: Function
-})*/
-
 </script>
 
 <template>
-    <!--Le tag fixed ne marche pas, obligé d'appliquer du CSS-->
-    <v-app-bar app style="position:fixed" class="flex-column"> 
+    <v-tool-bar class="bg-surface d-flex">
         <!-- Navigation space-->
-        <v-col cols="11" class="d-flex justify-center align-center">
-            <v-sheet class="mx-auto" max-width="100vw">
-                <v-slide-group show-arrows>
-                    <v-slide-group-item v-for="item in items" :key="item.id">
-                        <div class="pa-2 rounded-lg">
-                            <v-container class="d-flex flex-wrap align-center rounded-lg bg-primary pa-2">
-                                <div class="pa-2 rounded-lg" :style="{ backgroundColor: item.iconColor }"><v-icon
-                                        color="white">{{ item.icon }}</v-icon></div>
-                                <div class="px-10"> {{ item.name }}</div>
-                                <v-btn @click="deleteItem(item.id)" size=small class="justify-center rounded-lg bg-surface" elevation="3"
-                                    icon="mdi-trash-can-outline"></v-btn>
-                            </v-container>
-                        </div>
-                    </v-slide-group-item>
-                </v-slide-group>
-            </v-sheet>
-        </v-col>
-        <!--Add button-->
-        <v-col cols="1" class="d-flex justify-end align-center">
-            <v-btn @click="addItem()" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
-        </v-col>
-    </v-app-bar>
+        <v-row class="d-flex justify-center align-center">
+            <v-col cols="12" md="11" class="d-flex justify-center align-center">
+                <v-sheet class="mx-auto" max-width="100vw">
+                    <v-slide-group show-arrows>
+                        <v-slide-group-item v-for="item in items" :key="item.id">
+                            <div class="pa-2 rounded-lg">
+                                <v-container class="d-flex flex-wrap align-center rounded-lg bg-primary pa-2">
+                                    <div class="pa-2 rounded-lg" :style="{ backgroundColor: item.iconColor }"><v-icon
+                                            color="white">{{ item.icon }}</v-icon></div>
+                                    <div class="px-10"> {{ item.name }}</div>
+                                    <v-btn @click="deleteItem(item.id)" size=small
+                                        class="justify-center rounded-lg bg-surface" elevation="3"
+                                        icon="mdi-trash-can-outline"></v-btn>
+                                </v-container>
+                            </div>
+                        </v-slide-group-item>
+                    </v-slide-group>
+                </v-sheet>
+            </v-col>
+            <v-col cols="12" md="1" class="d-flex justify-md-end justify-center align-center mb-3 mt-3">
+                <v-btn @click="addItem()" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+            </v-col>
+        </v-row>
+    </v-tool-bar>
 </template>
-
