@@ -7,8 +7,8 @@
             <v-container class="align-center justify-center d-flex">
                 <v-btn @click="btnHandler('todo')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </v-container>
-            <Task v-if="showToDo || !isSmallScreen" v-for="(task, index) in tasksToDo" :key="task.id" :importance="task.priority" :type="task.taskType"
-                :title="task.name" :date="task.date" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
+            <Task v-if="showToDo || !isSmallScreen" v-for="(task, index) in tasksToDo" :key="task.id" :task="task" :importance="task.priority" :type="task.taskType"
+                :title="task.name" :date="task.date" :deleteTask="deleteTask" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
         </v-col>
         <v-col cols="12" md="4" ref="doingColumn" @dragover.prevent @drop="dropTask('doing')">
             <v-container @click="toggle('showDoing')" :class="{ 'clickable': isSmallScreen }" class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
@@ -17,8 +17,8 @@
             <v-container class="align-center justify-center d-flex">
                 <v-btn @click="btnHandler('doing')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </v-container>
-            <Task v-if="showDoing || !isSmallScreen" v-for="(task, index) in tasksDoing" :key="task.id" :importance="task.priority" :type="task.taskType"
-                :title="task.name" :date="task.date" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
+            <Task v-if="showDoing || !isSmallScreen" v-for="(task, index) in tasksDoing" :key="task.id" :task="task" :importance="task.priority" :type="task.taskType"
+                :title="task.name" :date="task.date" :deleteTask="deleteTask" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
         </v-col>
         <v-col cols="12" md="4" ref="doneColumn" @dragover.prevent @drop="dropTask('done')">
             <v-container @click="toggle('showDone')" :class="{ 'clickable': isSmallScreen }" class="d-flex justify-center align-center bg-surface pa-2 rounded-lg">
@@ -27,8 +27,8 @@
             <v-container class="align-center justify-center d-flex">
                 <v-btn @click="btnHandler('done')" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </v-container>
-            <Task v-if="showDone || !isSmallScreen" v-for="(task, index) in tasksDone" :key="task.id" :importance="task.priority" :type="task.taskType"
-                :title="task.name" :date="task.date" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
+            <Task v-if="showDone || !isSmallScreen" v-for="(task, index) in tasksDone" :key="task.id" :task="task" :importance="task.priority" :type="task.taskType"
+                :title="task.name" :date="task.date" :deleteTask="deleteTask" class="mb-2" draggable="true" @dragstart="dragTask(task)"></Task>
         </v-col>
     </v-row>
 </template>
@@ -104,6 +104,10 @@ function dropTask(newStatus) {
         props.editTaskHandler(updatedTask.id, updatedTask);
         draggedTask.value = null;
     }
+}
+
+function deleteTask(task) {
+    removeTask(task.id);
 }
 </script>
 
