@@ -1,20 +1,17 @@
-<script>
-export default {
-  props: ['importance', 'type', 'title', 'date', 'task', 'deleteTask'],
-  data() {
-    return {
-      hover: false
-    }
-  },
-  methods: {
-    mouseOver() {
-      this.hover = true;
-    },
-    mouseLeave() {
-      this.hover = false;
-    }
-  }
-}
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps(['importance', 'type', 'title', 'date', 'task', 'deleteTask']);
+
+const hover = ref(false);
+
+const mouseOver = () => {
+  hover.value = true;
+};
+
+const mouseLeave = () => {
+  hover.value = false;
+};
 </script>
 
 <template>
@@ -46,4 +43,3 @@ export default {
     </v-row>
   </v-container>
 </template>
-
