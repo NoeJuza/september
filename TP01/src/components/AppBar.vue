@@ -7,7 +7,7 @@ let items = ref([]);
 function addItem() {
     const newItem = {
         id: Math.random().toString(36).substr(2, 9), // Génération d'un ID unique
-        name: "Item " + (this.items.length + 1),
+        name: "Item " + (items.value.length + 1),
         icon: "mdi-vuetify",
         iconColor: "red",
     };
