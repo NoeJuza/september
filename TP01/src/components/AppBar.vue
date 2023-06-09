@@ -11,11 +11,11 @@ function addItem() {
         icon: "mdi-vuetify",
         iconColor: "red",
     };
-    this.items.push(newItem);
+    items.value.push(newItem);
 }
 
 function deleteItem(id) {
-    this.items = this.items.filter(item => item.id !== id);
+    items.value = items.value.filter(item => item.id !== id);
 }
 </script>
 
