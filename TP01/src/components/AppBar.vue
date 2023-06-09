@@ -1,5 +1,6 @@
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
+import Workspace from './Workspace.vue';
 
 let items = ref([]);
 
@@ -8,13 +9,24 @@ function addItem() {
         id: Math.random().toString(36).substr(2, 9), // Génération d'un ID unique
         name: "Item " + (this.items.length + 1),
         icon: "mdi-vuetify",
-        iconColor: "red"
+        iconColor: "red",
     };
     this.items.push(newItem);
 }
 
 function deleteItem(id) {
     this.items = this.items.filter(item => item.id !== id);
+}
+</script>
+
+<script>
+
+export default {
+    methods: {
+        defineId(payload) {
+            this.id = payload.id
+        }
+    }
 }
 </script>
 
@@ -26,16 +38,8 @@ function deleteItem(id) {
                 <v-sheet class="mx-auto" max-width="100vw">
                     <v-slide-group show-arrows>
                         <v-slide-group-item v-for="item in items" :key="item.id">
-                            <div class="pa-2 rounded-lg">
-                                <v-container class="d-flex flex-wrap align-center rounded-lg bg-primary pa-2">
-                                    <div class="pa-2 rounded-lg" :style="{ backgroundColor: item.iconColor }"><v-icon
-                                            color="white">{{ item.icon }}</v-icon></div>
-                                    <div class="px-10"> {{ item.name }}</div>
-                                    <v-btn @click="deleteItem(item.id)" size=small
-                                        class="justify-center rounded-lg bg-surface" elevation="3"
-                                        icon="mdi-trash-can-outline"></v-btn>
-                                </v-container>
-                            </div>
+                            <Workspace :id="item.id" :name="item.name" :icon="item.icon" :iconColor="item.iconColor" @delete-item="deleteItem(item.id)">
+                            </Workspace>
                         </v-slide-group-item>
                     </v-slide-group>
                 </v-sheet>
