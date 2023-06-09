@@ -19,19 +19,8 @@ function deleteItem(id) {
 }
 </script>
 
-<script>
-
-export default {
-    methods: {
-        defineId(payload) {
-            this.id = payload.id
-        }
-    }
-}
-</script>
-
 <template>
-    <v-tool-bar class="september-toolbar bg-surface d-flex">
+    <div class="september-toolbar bg-surface d-flex">
         <!-- Navigation space-->
         <v-row no-gutters class="flex-row d-flex flex-wrap flex-md-nowrap justify-center align-center">
             <div class="flex-grow-1 d-flex justify-start align-center">
@@ -48,7 +37,7 @@ export default {
                 <v-btn @click="addItem()" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </div>
         </v-row>
-    </v-tool-bar>
+    </div>
 </template>
 <style scoped>
 .september-toolbar{
