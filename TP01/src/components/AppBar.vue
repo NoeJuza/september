@@ -31,11 +31,11 @@ export default {
 </script>
 
 <template>
-    <v-tool-bar class="bg-surface d-flex">
+    <v-tool-bar class="september-toolbar bg-surface d-flex">
         <!-- Navigation space-->
-        <v-row class="d-flex justify-center align-center">
-            <v-col cols="12" md="11" class="d-flex justify-center align-center">
-                <v-sheet class="mx-auto" max-width="100vw">
+        <v-row no-gutters class="flex-row d-flex flex-wrap flex-md-nowrap justify-center align-center">
+            <div class="flex-grow-1 d-flex justify-start align-center">
+                <v-sheet :class="$vuetify.display.mdAndUp ? 'omd' : 'umd'">
                     <v-slide-group show-arrows>
                         <v-slide-group-item v-for="item in items" :key="item.id">
                             <Workspace :id="item.id" :name="item.name" :icon="item.icon" :iconColor="item.iconColor" @delete-item="deleteItem(item.id)">
@@ -43,10 +43,24 @@ export default {
                         </v-slide-group-item>
                     </v-slide-group>
                 </v-sheet>
-            </v-col>
-            <v-col cols="12" md="1" class="d-flex justify-md-end justify-center align-center mb-3 mt-3">
+            </div>
+            <div class="d-flex justify-center button-wrapper pa-4">
                 <v-btn @click="addItem()" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
-            </v-col>
+            </div>
         </v-row>
     </v-tool-bar>
 </template>
+<style scoped>
+.september-toolbar{
+    min-height: 64px;
+}
+.umd{
+    max-width: 100vw;
+}
+.omd{
+    max-width: 90vw;
+}
+.button-wrapper{
+    min-width: 10vw;
+}
+</style>

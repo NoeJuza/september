@@ -41,15 +41,7 @@ const props = defineProps({
     workspace: {
         type: Object,
         default: () => ({})
-    },
-    addTaskHandler: {
-        type: Function,
-        required: true
-    }, 
-    editTaskHandler: { 
-        type: Function,
-        required: true
-    },
+    }
 });
 
 let tasksToDo = ref([]);
@@ -73,7 +65,7 @@ watchEffect(() => {
 });
 
 function btnHandler(status) {
-    props.addTaskHandler(status);
+    props.workspace.addTaskHandler(status);
 }
 
 function toggle(status) {
