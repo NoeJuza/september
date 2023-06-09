@@ -76,10 +76,6 @@ function btnHandler(status) {
     props.addTaskHandler(status);
 }
 
-function removeTask(taskId) {
-    props.workspace.taskList = props.workspace.taskList.filter(task => task.id !== taskId);
-}
-
 function toggle(status) {
     if (isSmallScreen.value) {
         if (status === 'showToDo') {
@@ -107,7 +103,7 @@ function dropTask(newStatus) {
 }
 
 function deleteTask(task) {
-    removeTask(task.id);
+    props.workspace.removeTask(task.id);
 }
 </script>
 
