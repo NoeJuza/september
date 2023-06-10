@@ -6,18 +6,17 @@ import TaskListTest  from './TaskListTest.vue'
 <template>
         <div class="basic-layout-wrapper">
             <AppBarTest></AppBarTest>
-            <TaskListTest ></TaskListTest>
+            <TaskListTest class="tkt"></TaskListTest>
         </div>
 </template>
 <style scoped>
 .basic-layout-wrapper{
-    max-height: 100vh;
-    overflow-y: hidden;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    justify-content: flex-start;
-    align-items: stretch;
+    flex-flow: column;
+}
+.tkt{
+    flex: 1 1 auto;
+    overflow-y: scroll;
 }
 </style>

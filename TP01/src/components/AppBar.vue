@@ -44,10 +44,6 @@ console.log(props.currentlySelectedWorkspace)
 .september-toolbar{
     position: sticky;
 }
-.september-toolbar{
-    min-height: 10vh;
-    max-height: 30vh;
-}
 .umd{
     max-width: 100vw;
 }

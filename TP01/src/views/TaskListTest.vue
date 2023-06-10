@@ -6,7 +6,7 @@
                 <v-btn @click="handleContextualButtonClick('yes')" class="bg-accentuated-surface">Oui</v-btn>
             </template>
         </PopupComp>
-        <TaskList class="arbitrary" :workspace="workspace" :task-context-menu-handler="reactiveContextMenu"/>
+        <TaskList class="scrolling" :workspace="workspace" :task-context-menu-handler="reactiveContextMenu"/>
     </div>
 </template>
 
@@ -68,7 +68,4 @@ let workspace = reactive({
 });
 </script>
 <style scoped>
-.test-wrapper{
-    overflow-y:scroll
-}
 </style>
