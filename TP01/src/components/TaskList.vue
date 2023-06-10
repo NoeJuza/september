@@ -1,5 +1,5 @@
 <template>
-    <v-row no-gutters class="h-100">
+    <v-row no-gutters class="pb-2">
         <TaskColumn :key="refKeyTODOs" name="TO DO" :elts="tasksToDo" :notCollapsed="showToDo" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('todo')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('todo')">
         </TaskColumn>
         <TaskColumn :key="refKeyDOINGs" name="DOING" :elts="tasksDoing" :notCollapsed="showDoing" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('doing')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('doing')">

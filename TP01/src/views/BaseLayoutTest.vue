@@ -5,12 +5,8 @@ import TaskListTest  from './TaskListTest.vue'
 
 <template>
         <div class="basic-layout-wrapper">
-            <div>
-                <AppBarTest></AppBarTest>
-            </div>
-            <div class="pb-4">
-                <TaskListTest ></TaskListTest>
-            </div>
+            <AppBarTest></AppBarTest>
+            <TaskListTest ></TaskListTest>
         </div>
 </template>
 <style scoped>
