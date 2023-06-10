@@ -46,6 +46,7 @@ let showDone = ref(!isSmallScreen.value);
 
 window.addEventListener('resize', () => {
     isSmallScreen.value = window.innerWidth <= 960;
+    showToDo.value = true;
     showDoing.value = !isSmallScreen.value;
     showDone.value = !isSmallScreen.value;
 });
