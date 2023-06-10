@@ -17,9 +17,6 @@ export default {
 }
 </script>
 <style>
-html{
-  overflow-y: hidden !important;
-}
 .drop-shadow{
     box-shadow: 0px 3px 5px 2px gray !important;
 }
