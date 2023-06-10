@@ -22,6 +22,15 @@
     <div>
       <router-link to="addworkspacepopuptest">Test add workspace inside popup</router-link>
     </div>
+    <div>
+      <router-link to="appbartest">Test appbar alone</router-link>
+    </div>
+    <div>
+      <router-link to="tasklisttest">Test tasklist alone</router-link>
+    </div>
+    <div>
+      <router-link to="testBaseLayout">Test base layout (app-bar + taskList)</router-link>
+    </div>
   </v-container>
   
 </template>

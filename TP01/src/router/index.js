@@ -69,6 +69,16 @@ const router = createRouter({
       path: '/appbartest',
       name: 'appbartest',
       component: () => import('../views/AppBarTest.vue')
+    },
+    {
+      path: '/tasklisttest',
+      name: 'tasklisttest',
+      component: () => import('../views/TaskListTest.vue')
+    },
+    {
+      path: '/baselayouttest',
+      name: 'baselayouttest',
+      component: () => import('../views/BaseLayoutTest.vue')
     }
   ]
 })

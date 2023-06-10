@@ -1,21 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { defineProps } from "vue";
 import Workspace from './Workspace.vue';
 
-let items = ref([]);
+const props = defineProps({
+    workspaces: Array,
+    addWorkspace: Function,
+    removeWorkspace: Function
+})
 
 function addItem() {
-    const newItem = {
-        id: Math.random().toString(36).substr(2, 9), // Génération d'un ID unique
-        name: "Item " + (items.value.length + 1),
-        icon: "mdi-vuetify",
-        iconColor: "red",
-    };
-    items.value.push(newItem);
+    props.addWorkspace();
 }
 
 function deleteItem(id) {
-    items.value = items.value.filter(item => item.id !== id);
+    props.removeWorkspace(id);
 }
 </script>
 
@@ -26,7 +24,7 @@ function deleteItem(id) {
             <div class="flex-grow-1 d-flex justify-start align-center">
                 <v-sheet :class="$vuetify.display.mdAndUp ? 'omd' : 'umd'">
                     <v-slide-group show-arrows>
-                        <v-slide-group-item v-for="item in items" :key="item.id">
+                        <v-slide-group-item v-for="item in props.workspaces" :key="item.id">
                             <Workspace :id="item.id" :name="item.name" :icon="item.icon" :iconColor="item.iconColor" @delete-item="deleteItem(item.id)">
                             </Workspace>
                         </v-slide-group-item>
