@@ -29,7 +29,7 @@
       <router-link to="tasklisttest">Test tasklist alone</router-link>
     </div>
     <div>
-      <router-link to="testBaseLayout">Test base layout (app-bar + taskList)</router-link>
+      <router-link to="baselayouttest">Test base layout (app-bar + taskList)</router-link>
     </div>
   </v-container>
   

@@ -68,8 +68,8 @@ let workspace = reactive({
 });
 </script>
 <style scoped>
-.arbitrary{
-    max-height: 100vh;
+.test-wrapper{
+    max-height: 90vh;
     overflow-y:scroll
 }
 </style>

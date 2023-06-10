@@ -20,7 +20,7 @@ const props = defineProps({
     },
     taskContextMenuHandler: Function 
 });
-console.log(props.taskContextMenuHandler)
+//console.log(props.taskContextMenuHandler)
 let tasksToDo = reactive(props.workspace.taskList.filter(task => task.state === 'todo'));
 let tasksDoing = reactive(props.workspace.taskList.filter(task => task.state === 'doing'));
 let tasksDone = reactive(props.workspace.taskList.filter(task => task.state === 'done'));
@@ -55,7 +55,7 @@ function btnHandler(status) {
 }
 
 function toggle(status) {
-    console.log(status)
+    //console.log(status)
     if (isSmallScreen.value) {
         if (status === 'showTO DO') {
             showToDo.value = !showToDo.value;

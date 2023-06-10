@@ -5,7 +5,9 @@ import Workspace from './Workspace.vue';
 const props = defineProps({
     workspaces: Array,
     addWorkspace: Function,
-    removeWorkspace: Function
+    removeWorkspace: Function,
+    currentlySelectedWorkspace:Number,
+    setCurrentlySelectedWorkspace:Function
 })
 
 function addItem() {
@@ -15,6 +17,7 @@ function addItem() {
 function deleteItem(id) {
     props.removeWorkspace(id);
 }
+console.log(props.currentlySelectedWorkspace)
 </script>
 
 <template>
@@ -25,21 +28,25 @@ function deleteItem(id) {
                 <v-sheet :class="$vuetify.display.mdAndUp ? 'omd' : 'umd'">
                     <v-slide-group show-arrows>
                         <v-slide-group-item v-for="item in props.workspaces" :key="item.id">
-                            <Workspace :id="item.id" :name="item.name" :icon="item.icon" :iconColor="item.iconColor" @delete-item="deleteItem(item.id)">
-                            </Workspace>
+                            <Workspace @select-item="setCurrentlySelectedWorkspace" :selected=" props.currentlySelectedWorkspace == item.id" :id="item.id" :name="item.name" :icon="item.icon" :iconColor="item.iconColor" @delete-item="deleteItem(item.id)"></Workspace>
                         </v-slide-group-item>
                     </v-slide-group>
                 </v-sheet>
             </div>
             <div class="d-flex justify-center button-wrapper pa-4">
-                <v-btn @click="addItem()" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg"></v-btn>
+                <v-btn @click="addItem()" icon="mdi-plus" class="drop-shadow justify-center bg-accentuated-surface rounded-lg"></v-btn>
             </div>
         </v-row>
     </div>
 </template>
+
 <style scoped>
 .september-toolbar{
-    min-height: 64px;
+    position: sticky;
+}
+.september-toolbar{
+    min-height: 10vh;
+    max-height: 30vh;
 }
 .umd{
     max-width: 100vw;
