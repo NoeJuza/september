@@ -18,5 +18,6 @@ import TaskListTest  from './TaskListTest.vue'
 .tkt{
     flex: 1 1 auto;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 </style>
