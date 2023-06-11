@@ -31,6 +31,9 @@
     <div>
       <router-link to="baselayouttest">Test base layout (app-bar + taskList)</router-link>
     </div>
+    <div>
+      <router-link to="/">Test everything together (SeptemberView)</router-link>
+    </div>
   </v-container>
   
 </template>
