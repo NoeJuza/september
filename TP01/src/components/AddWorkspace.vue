@@ -62,9 +62,6 @@
   </template>
   
   <style>
-  .custom-select {
-    width: 100%;
-  }
   .arbitrary-size{
     max-height: 300px;
   }

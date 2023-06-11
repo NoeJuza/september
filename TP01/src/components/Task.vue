@@ -3,19 +3,10 @@ import { ref } from 'vue';
 
 const props = defineProps(['importance', 'type', 'title', 'date', 'task', 'deleteTask']);
 const emits = defineEmits(['click-anywhere-but-trash'])
-const hover = ref(false);
-
-const mouseOver = () => {
-  hover.value = true;
-};
-
-const mouseLeave = () => {
-  hover.value = false;
-};
 </script>
 
 <template>
-  <v-container class="task-container bg-surface rounded-lg w-75" @mouseenter="mouseOver" @mouseleave="mouseLeave">
+  <v-container class="task-container bg-surface rounded-lg w-75">
     <div class="floating-trash-can-wrapper pa-0 justify-end mt-n3 mr-n3">
       <v-icon class=" bg-accentuated-surface align-center rounded-lg" @click="deleteTask(props.task)">mdi-delete</v-icon>
     </div>

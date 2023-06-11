@@ -31,7 +31,7 @@
               <v-col cols="12" sm="9">
                 <v-select hide-details style="margin-top: 6px"
                   :items="isMobile ? notificationItemsAbbreviation : notificationItems" item-title="notification"
-                  bg-color="surface" class="custom-select" :modelValue="selectNotificationDisplay" @update:modelValue="handleNotificationChange" ></v-select>
+                  bg-color="surface" :modelValue="selectNotificationDisplay" @update:modelValue="handleNotificationChange" ></v-select>
               </v-col>
               <v-col cols="12" sm="3" class="d-flex flex-column align-start align-sm-center justify-end">
                 <div class="bg-surface rounded-lg d-flex justify-center align-center" @click="toggleIsRing()" style="height: 56px; aspect-ratio: 1;">
@@ -78,13 +78,7 @@
     </v-row>
   </div>
 </template>
-<style>
-.custom-select {
-  width: 100%;
-}
-</style>
   
-
 <script setup>
 import { ref, defineProps } from 'vue'
 const props = defineProps({

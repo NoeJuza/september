@@ -1,14 +1,14 @@
 <template>
     <v-col  cols="12" md="4" class="pa-0 pa-md-2 pt-2">
-        <v-container @click="toggleCollapsed('show'+props.name)" :class="{ 'clickable': isSmallScreen }" class="drop-shadow d-flex justify-center align-center bg-surface pa-0 pa-md-2 rounded-lg">
+        <v-container @click="toggleCollapsed('show'+props.name)" :class="isSmallScreen ? 'clickable': ''" class="drop-shadow d-flex justify-center align-center bg-surface pa-0 pa-md-2 rounded-lg">
             <h1>{{props.name}}</h1>
         </v-container>
         <div v-if="notCollapsed">
             <v-container class="align-center justify-center d-flex">
                 <v-btn @click="btnHandler()" icon="mdi-plus" class="justify-center bg-accentuated-surface rounded-lg drop-shadow"></v-btn>
             </v-container>
-            <Task v-for="(task) in elts" :key="''+task.id+task.name+task.description+task.priority+task.taskType+task.date+task.whenNotif+task.notif" :task="task" :importance="task.priority" :type="task.taskType"
-            :title="task.name" :date="task.date" :deleteTask="deleteTask" class="mb-2" draggable="true" @dragstart="props.dragTask(task)" @contextmenu="(e) =>handleContextMenuTask(e,task)" @click-anywhere-but-trash="handleClickTask(task)"></Task>
+            <Task  v-for="(task) in elts" :key="''+task.id+task.name+task.description+task.priority+task.taskType+task.date+task.whenNotif+task.notif" :task="task" :importance="task.priority" :type="task.taskType"
+             :title="task.name" :date="task.date" :deleteTask="deleteTask" class="clickable mb-2" draggable="true" @dragstart="props.dragTask(task)" @contextmenu="(e) =>handleContextMenuTask(e,task)" @click-anywhere-but-trash="handleClickTask(task)"></Task>
         </div>
     </v-col>
 </template>
@@ -32,5 +32,3 @@ function handleContextMenuTask (e,task) {
     props.handleContextMenuTask(e,task)
 }
 </script>
-<style scoped>
-</style>

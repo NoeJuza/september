@@ -20,4 +20,7 @@ export default {
 .drop-shadow{
     box-shadow: 0px 3px 5px 2px gray !important;
 }
+.clickable {
+    cursor: pointer;
+}
 </style>

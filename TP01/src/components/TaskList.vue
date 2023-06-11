@@ -94,7 +94,4 @@ function deleteTask(task) {
 </script>
 
 <style scoped>
-.clickable {
-    cursor: pointer;
-}
 </style>

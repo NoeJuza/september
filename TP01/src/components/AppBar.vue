@@ -40,9 +40,6 @@ function deleteItem(id) {
 </template>
 
 <style scoped>
-.september-toolbar{
-    position: sticky;
-}
 .umd{
     max-width: 100vw;
 }

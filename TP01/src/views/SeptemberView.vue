@@ -117,7 +117,7 @@ const handleClickTask = (task) =>{
 }
 </script>
 <template>
-    <div class="september-wrapper" :key="'workspace-'+ currentlySelectedWorkspace">
+    <div class="september-wrapper d-flex flex-column" :key="'workspace-'+ currentlySelectedWorkspace">
         <PopupComp :key="'contextual-popup-for-'+ currentlySelectedWorkspace  + '-' + contextualSelectedTask?.id" :title="'Supprimer '+ contextualSelectedTask?.name +'?'" :editable="false" :show="popupContextShowed" :set-show="setpopupContextShowed">
             <template #content>
                 <v-btn @click="handleContextualButtonClick('no')">Non</v-btn>
@@ -126,7 +126,7 @@ const handleClickTask = (task) =>{
         </PopupComp>
         <AddWorkspacePopup :key="Math.max( ...(reactiveDataGlobal.workspaces.map(e => e.id)) ) - -1" :add-workspace="handleAddWorkspaceValidation" :show="showFormWorkspace" :set-show="setShowFormWorkspace"></AddWorkspacePopup>
         <AddTaskPopup :key="Math.max(...[0,...(reactiveDataGlobal.workspaces.find(x => x.id == currentlySelectedWorkspace).taskList.map(e =>e.id))]) - -1" :add-task="handleAddTaskFormValidation" :show="showAddTaskForm" :set-show="setShowAddTaskForm"></AddTaskPopup>
-        <EditTaskPopup :key="'editing' + currentlyEditedTask" :edit-task="handleEditFormValidation" :show="showEditTaskPopup" :set-show="setShowEditTaskPopup" :task="currentlyEditedTask"></EditTaskPopup>
+        <EditTaskPopup :key="'editing-' + currentlySelectedWorkspace + currentlyEditedTask?.id" :edit-task="handleEditFormValidation" :show="showEditTaskPopup" :set-show="setShowEditTaskPopup" :task="currentlyEditedTask"></EditTaskPopup>
         <AppBar :workspaces="reactiveDataGlobal.workspaces" :add-workspace="handleBtnAppBarAdd" :remove-workspace="reactiveDataGlobal.removeWorkspace" :currently-selected-workspace="currentlySelectedWorkspace" :setCurrentlySelectedWorkspace="setCurrentlySelectedWorkspace"></AppBar>
         <TaskList :key="forwhenEdited" class="take-remaining-space-and-scroll" :handleClickTask="handleClickTask" :handleButtonClick="handleClickAddTaskButton" :workspace="reactiveDataGlobal.workspaces.find(x => x.id == currentlySelectedWorkspace )" :task-context-menu-handler="reactiveContextMenu" ></TaskList>
     </div>
@@ -134,8 +134,6 @@ const handleClickTask = (task) =>{
 <style scoped>
 .september-wrapper{
     height: 100vh;
-    display: flex;
-    flex-flow: column;
 }
 .take-remaining-space-and-scroll{
     flex: 1 1 auto;

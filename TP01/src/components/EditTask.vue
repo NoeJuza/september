@@ -72,13 +72,6 @@
     </v-row>
   </div>
 </template>
-<style>
-.custom-select {
-  width: 100%;
-}
-</style>
-  
-
 <script setup>
 import { reactive } from 'vue';
 import { ref } from 'vue'
