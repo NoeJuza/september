@@ -80,7 +80,7 @@
 </template>
   
 <script setup>
-import { ref, defineProps, proxyRefs, onMounted } from 'vue'
+import { ref, defineProps} from 'vue'
 const props = defineProps({
   addTask : Function,
   title : String
