@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AddTaskTest from '../views/AddTaskTest.vue'
-import EditTaskTest from '../views/EditTaskTest.vue';
-import AddWorkspaceTest from '../views/AddWorkspaceTest.vue';
-import AddTaskPopupTest from '../views/AddTaskPopupTest.vue';
-import EditTaskPopupTest from "../views/EditTaskPopupTest.vue"
-import PopupTest from '../views/PopupTest.vue'
-import IconPickerTest from '../views/IconPickerTest.vue'
-import AddWorkspacePopupTest from '../views/AddWorkspacePopupTest.vue'
+import HomeView from '../tests/HomeView.vue'
+import AddTaskTest from '../tests/AddTaskTest.vue'
+import EditTaskTest from '../tests/EditTaskTest.vue';
+import AddWorkspaceTest from '../tests/AddWorkspaceTest.vue';
+import AddTaskPopupTest from '../tests/AddTaskPopupTest.vue';
+import EditTaskPopupTest from "../tests/EditTaskPopupTest.vue"
+import PopupTest from '../tests/PopupTest.vue'
+import IconPickerTest from '../tests/IconPickerTest.vue'
+import AddWorkspacePopupTest from '../tests/AddWorkspacePopupTest.vue'
 import SeptemberView from '../views/SeptemberView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,27 +63,19 @@ const router = createRouter({
       component: AddWorkspacePopupTest
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    },
-    {
       path: '/appbartest',
       name: 'appbartest',
-      component: () => import('../views/AppBarTest.vue')
+      component: () => import('../tests/AppBarTest.vue')
     },
     {
       path: '/tasklisttest',
       name: 'tasklisttest',
-      component: () => import('../views/TaskListTest.vue')
+      component: () => import('../tests/TaskListTest.vue')
     },
     {
       path: '/baselayouttest',
       name: 'baselayouttest',
-      component: () => import('../views/BaseLayoutTest.vue')
+      component: () => import('../tests/BaseLayoutTest.vue')
     }
   ]
 })
