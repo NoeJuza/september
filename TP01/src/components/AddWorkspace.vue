@@ -29,7 +29,7 @@
                 </v-card-text>
                 <v-btn hide-details color="accentuated-surface" class="text-surface rounded-lg mr-1" size="x-small" icon="mdi-eyedropper" @click="toggleColorPicker()"></v-btn>
               </v-card>
-              <v-color-picker  class="" hide-details hide-inputs v-show="colorPickerActive" v-model="selectedColor" @input="getColor()" ></v-color-picker>
+              <v-color-picker class="sizing-color-picker" hide-details hide-inputs v-show="colorPickerActive" v-model="selectedColor" @input="getColor()" ></v-color-picker>
             </v-col>
         </v-row>
         <v-row>
@@ -67,7 +67,17 @@
   }
   .arbitrary-size{
     max-height: 300px;
-}
+  }
+  .v-color-picker{
+    max-width: 100% !important;
+  }
+  .v-color-picker-canvas{
+    width: 100% !important;
+  }
+  .v-color-picker-canvas canvas{
+    width: 100%;
+    height: 150px;
+  }
   </style>
 <script setup>
 import { ref, defineProps } from 'vue'

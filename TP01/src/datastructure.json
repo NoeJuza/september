@@ -1,27 +1,16 @@
 {
     "workspaces":[
         {
-            "id":"Number",
-            "name":"String",
-            "icon":"String",
-            "iconColor": "String",
+            "id":1,
+            "name":"Home",
+            "icon":"mdi-home",
+            "iconColor": "#6FFFD2",
             "taskList":[
-                {
-                    "id":"Number",
-                    "name":"String",
-                    "state":"String",
-                    "description":"String",
-                    "date":"String",
-                    "notif":"Boolean",
-                    "whenNotif":"String",
-                    "priority":"String",
-                    "taskType":"String"
-                }
             ],
-            "addTask":"Function",
-            "editTask":"Function"
+            "addTask":"",
+            "editTask":""
         }
     ],
-    "addWorkspace":"Function",
-    "removeWorkspace":"Function"
+    "addWorkspace":"",
+    "removeWorkspace":""
 }

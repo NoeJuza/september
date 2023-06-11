@@ -1,10 +1,10 @@
 <template>
     <v-row no-gutters class="pb-2">
-        <TaskColumn :key="refKeyTODOs" name="TO DO" :elts="tasksToDo" :notCollapsed="showToDo" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('todo')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('todo')">
+        <TaskColumn :handleClickTask="handleClickTask" :key="refKeyTODOs" name="TO DO" :elts="tasksToDo" :notCollapsed="showToDo" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('todo')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('todo')">
         </TaskColumn>
-        <TaskColumn :key="refKeyDOINGs" name="DOING" :elts="tasksDoing" :notCollapsed="showDoing" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('doing')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('doing')">
+        <TaskColumn :handleClickTask="handleClickTask" :key="refKeyDOINGs" name="DOING" :elts="tasksDoing" :notCollapsed="showDoing" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('doing')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('doing')">
         </TaskColumn>
-        <TaskColumn :key="refKeyDONEs" name="DONE" :elts="tasksDone" :notCollapsed="showDone" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('done')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('done')">
+        <TaskColumn :handleClickTask="handleClickTask" :key="refKeyDONEs" name="DONE" :elts="tasksDone" :notCollapsed="showDone" :toggleCollapsed="toggle" :dragTask="dragTask" :btnHandler="() =>{btnHandler('done')}" :deleteTask="deleteTask" :handleContextMenuTask="props.taskContextMenuHandler"  ref="toDoColumn" @dragover.prevent @drop="dropTask('done')">
         </TaskColumn>
     </v-row>
 </template>
@@ -18,7 +18,9 @@ const props = defineProps({
         type: Object,
         default: () => ({})
     },
-    taskContextMenuHandler: Function 
+    taskContextMenuHandler: Function,
+    handleButtonClick: Function,
+    handleClickTask: Function
 });
 //console.log(props.taskContextMenuHandler)
 let tasksToDo = reactive(props.workspace.taskList.filter(task => task.state === 'todo'));
@@ -52,7 +54,7 @@ window.addEventListener('resize', () => {
 });
 
 function btnHandler(status) {
-    props.workspace.addTask(status);
+    props.handleButtonClick(status);
 }
 
 function toggle(status) {
@@ -79,6 +81,7 @@ function dropTask(newStatus) {
         //console.log(draggedTask.value)
         const clone = {...draggedTask.value}
         const updatedTask = { ...clone, state: newStatus };
+        console.log(updatedTask)
         props.workspace.editTask(updatedTask.id, updatedTask);
         draggedTask.value = null;
     }

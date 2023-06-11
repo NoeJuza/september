@@ -6,12 +6,11 @@
     const edit = true;
     const props = defineProps({
         task:Object,
-        addTask:Function,
         show:Boolean,
         setShow: Function,
         editTask: Function,
     })
-    const taskName = ref(props.task.name);
+    const taskName = ref(props.task?.name);
     const setTaskName = (val) =>{
         taskName.value = val
         let virtualObj = {...props.task}
@@ -25,7 +24,7 @@
 
 </script>
 <template>
-    <PopupComp :show="props.show" :setShow="props.setShow" :editable="edit" :title="taskName" :setTitle="setTaskName">
+    <PopupComp v-if="taskName != undefined" :show="props.show" :setShow="props.setShow" :editable="edit" :title="taskName" :setTitle="setTaskName">
         <template #content>
             <EditTask :task="props.task" :edit-task="handleTaskEdit"></EditTask>
         </template>

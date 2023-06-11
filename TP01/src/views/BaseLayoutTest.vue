@@ -6,7 +6,7 @@ import TaskListTest  from './TaskListTest.vue'
 <template>
         <div class="basic-layout-wrapper">
             <AppBarTest></AppBarTest>
-            <TaskListTest class="tkt"></TaskListTest>
+            <TaskListTest class="take-remaining-space-and-scroll"></TaskListTest>
         </div>
 </template>
 <style scoped>
@@ -15,7 +15,7 @@ import TaskListTest  from './TaskListTest.vue'
     display: flex;
     flex-flow: column;
 }
-.tkt{
+.take-remaining-space-and-scroll{
     flex: 1 1 auto;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;

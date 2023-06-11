@@ -6,7 +6,7 @@
                 <v-btn @click="handleContextualButtonClick('yes')" class="bg-accentuated-surface">Oui</v-btn>
             </template>
         </PopupComp>
-        <TaskList class="scrolling" :workspace="workspace" :task-context-menu-handler="reactiveContextMenu"/>
+        <TaskList :workspace="workspace" :task-context-menu-handler="reactiveContextMenu"/>
     </div>
 </template>
 
@@ -25,6 +25,12 @@ const handleContextualButtonClick = (yesno) =>{
         removeTask(contextualSelectedTask.value.id)
     }
 }
+const reactiveContextMenu = (e,task) =>{
+    e.preventDefault();
+    console.log(task);
+    popupContextShowed.value = true;
+    contextualSelectedTask.value = task;
+}
 const addTask = (status) => {
     workspace.taskList.push({
         id: Math.max(...[0,...(workspace.taskList).map(e =>e.id)]) - -1,
@@ -36,7 +42,7 @@ const addTask = (status) => {
         whenNotif: '2023-06-01',
         priority: 'High',
         taskType: 'Work'
-});
+    });
 }
 const editTask = (id,newDatas) =>{
     //console.log(id,newDatas)
@@ -46,12 +52,7 @@ const removeTask = (id)=>{
     workspace.taskList = workspace.taskList.filter(x => x.id != id)
     console.log(workspace.taskList)
 }
-const reactiveContextMenu = (e,task) =>{
-    e.preventDefault();
-    console.log(task);
-    popupContextShowed.value = true;
-    contextualSelectedTask.value = task;
-}
+
 let workspace = reactive({
     id: 1,
     name: "Workspace 1",

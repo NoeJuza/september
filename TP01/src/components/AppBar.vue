@@ -17,7 +17,6 @@ function addItem() {
 function deleteItem(id) {
     props.removeWorkspace(id);
 }
-console.log(props.currentlySelectedWorkspace)
 </script>
 
 <template>

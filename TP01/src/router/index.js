@@ -8,12 +8,17 @@ import EditTaskPopupTest from "../views/EditTaskPopupTest.vue"
 import PopupTest from '../views/PopupTest.vue'
 import IconPickerTest from '../views/IconPickerTest.vue'
 import AddWorkspacePopupTest from '../views/AddWorkspacePopupTest.vue'
-
+import SeptemberView from '../views/SeptemberView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path : '/',
+      name: 'september',
+      component: SeptemberView
+    },
+    {
+      path: '/hometest',
       name: 'home',
       component: HomeView
     },
