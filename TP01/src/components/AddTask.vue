@@ -140,7 +140,7 @@ let importanceItems = ([
    'Faible'
 ]);
 
-let selectTypeTask = ref('Personnel');
+let selectTypeTask = ref('Personnelle');
 
 let typeTaskItems = ref([
    'Personnelle',
