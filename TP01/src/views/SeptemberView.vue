@@ -118,7 +118,7 @@ const handleClickTask = (task) =>{
 </script>
 <template>
     <div class="september-wrapper" :key="'workspace-'+ currentlySelectedWorkspace">
-        <PopupComp :key="'contextual-popup-for-'+ contextualSelectedTask?.id" :title="'Supprimer '+ contextualSelectedTask?.name +'?'" :editable="false" :show="popupContextShowed" :set-show="setpopupContextShowed">
+        <PopupComp :key="'contextual-popup-for-'+ currentlySelectedWorkspace  + '-' + contextualSelectedTask?.id" :title="'Supprimer '+ contextualSelectedTask?.name +'?'" :editable="false" :show="popupContextShowed" :set-show="setpopupContextShowed">
             <template #content>
                 <v-btn @click="handleContextualButtonClick('no')">Non</v-btn>
                 <v-btn @click="handleContextualButtonClick('yes')" class="bg-accentuated-surface">Oui</v-btn>
