@@ -10,7 +10,7 @@ import PopupComp from '../components/PopupComp.vue'
 const reactiveDataGlobal = reactive(dataGlobal);
 const forwhenEdited = ref(0)
 reactiveDataGlobal.addWorkspace = (obj) =>{
-    console.log(reactiveDataGlobal, obj)
+    //console.log(reactiveDataGlobal, obj)
     const id = Math.max( ...(reactiveDataGlobal.workspaces.map(e =>e.id)) ) - -1
     obj.id = id
     obj.taskList = []
@@ -21,7 +21,7 @@ reactiveDataGlobal.addWorkspace = (obj) =>{
 }
 reactiveDataGlobal.removeWorkspace = (id) =>{
     if (reactiveDataGlobal.workspaces.length > 1) {
-        console.log(id)
+        //console.log(id)
         if(id == currentlySelectedWorkspace.value){
             currentlySelectedWorkspace.value = reactiveDataGlobal.workspaces.find(x => x.id != id).id;
         }
@@ -29,12 +29,12 @@ reactiveDataGlobal.removeWorkspace = (id) =>{
     }
 }
 const addTaskInWorkspace = (workId, obj) =>{
-    console.log(obj)
+    //console.log(obj)
     reactiveDataGlobal.workspaces.find(x => x.id == workId).taskList.push(obj)
 }
 const editTaskInWorkspace = (workId, id, newdatas) =>{
-    console.log(id, newdatas)
-    console.log(reactiveDataGlobal)
+    //console.log(id, newdatas)
+    //console.log(reactiveDataGlobal)
     reactiveDataGlobal.workspaces.find(x => x.id == workId).taskList = reactiveDataGlobal.workspaces.find(x => x.id == workId).taskList.map(x => x.id == id ? newdatas : x);
 }
 const removeTaskInWorkspace = (workId, id) =>{
@@ -43,13 +43,13 @@ const removeTaskInWorkspace = (workId, id) =>{
 reactiveDataGlobal.workspaces[0].addTask = (obj) => {addTaskInWorkspace(1,obj)}
 reactiveDataGlobal.workspaces[0].editTask = (id,newdatas) =>{editTaskInWorkspace(1,id,newdatas)}
 reactiveDataGlobal.workspaces[0].removeTask = (id) =>{removeTaskInWorkspace(1,id)}
-console.log(reactiveDataGlobal)
+//console.log(reactiveDataGlobal)
 
 const currentlySelectedWorkspace = ref(1);
 const setCurrentlySelectedWorkspace = (val) =>{
         currentlySelectedWorkspace.value = val;
-        console.log(currentlySelectedWorkspace.value)
-        console.log(reactiveDataGlobal)
+        //console.log(currentlySelectedWorkspace.value)
+        //console.log(reactiveDataGlobal)
 }
 const showFormWorkspace = ref(false);
 const handleBtnAppBarAdd = () =>{
@@ -76,7 +76,7 @@ const handleContextualButtonClick = (yesno) =>{
 }
 const reactiveContextMenu = (e,task) =>{
     e.preventDefault();
-    console.log(task);
+    //console.log(task);
     popupContextShowed.value = true;
     contextualSelectedTask.value = task;
 }
@@ -96,7 +96,7 @@ const handleAddTaskFormValidation = (obj) =>{
     tempTask.value.id = id
     tempTask.value.state = state
     reactiveDataGlobal.workspaces.find(x => x.id == currentlySelectedWorkspace.value ).addTask(tempTask.value)
-    console.log(reactiveDataGlobal.workspaces.find(x => x.id == currentlySelectedWorkspace.value ))
+    //console.log(reactiveDataGlobal.workspaces.find(x => x.id == currentlySelectedWorkspace.value ))
     tempTask.value = {}
     showAddTaskForm.value = false;
 }

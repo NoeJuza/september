@@ -28,7 +28,7 @@ const props = defineProps({
     handleClickTask: Function
 })
 function handleContextMenuTask (e,task) {
-    console.log(props.handleContextMenuTask)
+    //console.log(props.handleContextMenuTask)
     props.handleContextMenuTask(e,task)
 }
 </script>

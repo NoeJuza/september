@@ -4,18 +4,17 @@
         currentlySelected:String,
         updateCurrentlySelected: Function
     });
-    console.log(props.currentlySelected)
+    //console.log(props.currentlySelected)
     import icons from "../allIcons.json";
     const currentElts = reactive({elts: [...icons].splice(0,1000)})
-    console.log(currentElts.elts.length)
-    //console.log(currentElts.value)
+    //console.log(currentElts.elts.length)
     const scrollBhvr = (e) =>{
-        console.log(Math.abs(e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop) < 1 && currentElts.elts.length < icons.length)
+        //console.log(Math.abs(e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop) < 1 && currentElts.elts.length < icons.length)
         if(Math.abs(e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop) < 1 && currentElts.elts.length < icons.length){
             let destIndex = currentElts.elts.length + 500;
             destIndex = destIndex >= icons.length ? icons.length : destIndex
             currentElts.elts.push(...([...icons].splice(currentElts.elts.length, destIndex )))
-            console.log(currentElts.elts.length)
+            //console.log(currentElts.elts.length)
         }
     }
     const computeColor = (item) =>{
