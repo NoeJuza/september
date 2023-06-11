@@ -20,7 +20,13 @@ reactiveDataGlobal.addWorkspace = (obj) =>{
     reactiveDataGlobal.workspaces.push(obj)    
 }
 reactiveDataGlobal.removeWorkspace = (id) =>{
-    if (reactiveDataGlobal.workspaces.length > 1) reactiveDataGlobal.workspaces = reactiveDataGlobal.workspaces.filter(x => x.id != id)
+    if (reactiveDataGlobal.workspaces.length > 1) {
+        console.log(id)
+        if(id == currentlySelectedWorkspace.value){
+            currentlySelectedWorkspace.value = reactiveDataGlobal.workspaces.find(x => x.id != id).id;
+        }
+        reactiveDataGlobal.workspaces = reactiveDataGlobal.workspaces.filter(x => x.id != id)
+    }
 }
 const addTaskInWorkspace = (workId, obj) =>{
     console.log(obj)
@@ -95,9 +101,7 @@ const handleAddTaskFormValidation = (obj) =>{
     showAddTaskForm.value = false;
 }
 const currentlyEditedTask = ref(null)
-const setCurrentlyEditedTask = (val) =>{
-    currentlyEditedTask.value = val
-}
+
 const showEditTaskPopup = ref(false)
 
 const setShowEditTaskPopup = (val) =>{
