@@ -8,20 +8,20 @@
         <v-row>
           <v-col cols="5" sm="4" class="d-flex flex-column justify-center align-start">
             <v-card color="surface" style="margin-top: 6px">
-              <v-card-text class="text-center">
+              <v-card-text @click="$refs.echehance.focus()" class="text-center">
                 Échéance
               </v-card-text>
             </v-card>
           </v-col>
           <v-col>
-            <v-text-field hide-details style="margin-top: 6px" bg-color="surface" type="date" label="date" v-model="date">
+            <v-text-field ref="echehance" hide-details style="margin-top: 6px" bg-color="surface" type="date" label="date" v-model="date">
             </v-text-field>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="5" sm="4" class="d-flex flex-column justify-center align-start">
             <v-card color="surface" class="d-flex align-center" style="margin-top: 6px">
-              <v-card-text class="text-center">
+              <v-card-text @click="$refs.notifs.menu = true" class="text-center">
                 Notification
               </v-card-text>
             </v-card>
@@ -29,7 +29,7 @@
           <v-col>
             <v-row>
               <v-col cols="12" sm="9">
-                <v-select hide-details style="margin-top: 6px"
+                <v-select ref="notifs" hide-details style="margin-top: 6px"
                   :items="isMobile ? notificationItemsAbbreviation : notificationItems" item-title="notification"
                   bg-color="surface" :modelValue="selectNotificationDisplay" @update:modelValue="handleNotificationChange" ></v-select>
               </v-col>
@@ -45,26 +45,26 @@
         <v-row>
           <v-col cols="5" sm="4" class="d-flex flex-column justify-center align-start">
             <v-card color="surface" class="d-flex align-center" style="margin-top: 6px">
-              <v-card-text class="text-center">
+              <v-card-text @click="$refs.importance.menu = true" class="text-center">
                 Importance
               </v-card-text>
             </v-card>
           </v-col>
           <v-col>
-            <v-select hide-details style="margin-top: 8px" v-model="selectImportance" 
+            <v-select ref="importance" hide-details style="margin-top: 8px" v-model="selectImportance" 
               :items="importanceItems" item-title="importance" bg-color="surface"></v-select>
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="5" sm="4" class="d-flex flex-column justify-center align-start">
             <v-card color="surface" class="d-flex align-center" style="margin-top: 6px">
-              <v-card-text class="text-center">
+              <v-card-text @click="$refs.tasktype.menu = true" class="text-center">
                 Type de tâche
               </v-card-text>
             </v-card>
           </v-col>
           <v-col>
-            <v-select hide-details style="margin-top: 8px" v-model="selectTypeTask" :items="typeTaskItems"
+            <v-select ref="tasktype" hide-details style="margin-top: 8px" v-model="selectTypeTask" :items="typeTaskItems"
               item-title="typeTask" bg-color="surface"></v-select>
           </v-col>
         </v-row>
@@ -80,17 +80,17 @@
 </template>
   
 <script setup>
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, proxyRefs, onMounted } from 'vue'
 const props = defineProps({
   addTask : Function,
   title : String
 })
+
 //console.log(props.addTask)
 const date =ref(null);
 let description = ref(null);
 let selectNotification = ref("1 jour avant");
 let selectNotificationDisplay = ref("1 jour avant");
-
 const handleNotificationChange = (newValue) =>{
   selectNotificationDisplay.value = newValue;
   if (notificationItemsAbbreviation.includes(newValue)){

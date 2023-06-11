@@ -4,20 +4,20 @@
         <v-row>
             <v-col cols="5" sm="4" md="3" class="d-flex flex-colum flex-nowrap align-content-center justify-start align-center">
               <v-card  color="surface" class=" align-center pa-1 d-flex">
-                <v-card-text class="text-center py-1">
+                <v-card-text @click="$refs.inpname.focus()" class="text-center py-1">
                   Nom
                 </v-card-text>
               </v-card>
             </v-col>
             <v-col cols="7" sm="8" md="9">
-              <v-text-field v-model="name" hide-details class="mt-2" rows="1" auto-grow :outlined="false" :bg-color="'surface'" > 
+              <v-text-field ref="inpname" v-model="name" hide-details class="mt-2" rows="1" auto-grow :outlined="false" :bg-color="'surface'" > 
               </v-text-field>
             </v-col>
         </v-row>
         <v-row>
             <v-col cols="5" sm="4" md="3" class="d-flex flex-colum flex-nowrap align-content-center justify-start align-center">
               <v-card  color="surface" class=" align-center pa-1 d-flex" >
-                <v-card-text class="text-center py-1">
+                <v-card-text @click="colorPickerActive = true" class="text-center py-1">
                   Couleur
                 </v-card-text>
               </v-card>
