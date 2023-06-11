@@ -132,7 +132,7 @@ let importanceItems = ([
 
 
 let typeTaskItems = ref([
-   'Personnel',
+   'Personnelle',
    'Récurente',
    'À déléguer'
 ]);
